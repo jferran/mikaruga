@@ -1,7 +1,7 @@
 # mikaruga
 
 
-images: 
-https://freesvg.org/cartoon-spaceship
-https://freesvg.org/nave
+images: __
+https://freesvg.org/cartoon-spaceship __
+https://freesvg.org/nave __
 
