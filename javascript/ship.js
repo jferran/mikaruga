@@ -10,6 +10,7 @@ class Ship {
         this.img.src = "./images/nave.svg"
         this.speed=1;
 
+        this.color=color
         this.direction="right"
 
         

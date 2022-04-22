@@ -19,7 +19,7 @@ class Game {
 
         this.myShip = new MyShip();
         this.ship = new Ship(40, 40, "black");
-        this.shipsArr = []
+        this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(140, 40, "white"), new Ship(180, 40, "white")]
         this.bulletShipArr = []
         //this.shipArr = [new Ship(40, 50)]
         
@@ -58,16 +58,20 @@ class Game {
         
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
-/*
+
         this.shipsArr.forEach((ship) => {
-            this.bulletShipArr.push(new Bullet(ship.x+ship.w/w, ship.y, "down", ship.color))
+            ship.move();
+            //this.bulletShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
+
+            if(timeStamp*10%2===0)
+                this.bulletShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
         })
-*/
 
 
+/*
         if(timeStamp*10%2===0)
         this.bulletShipArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
-        
+  */      
         this.bulletShipArr.forEach((bullet) => {
             bullet.move()
         })
@@ -80,6 +84,9 @@ class Game {
         this.myShip.drawShip()
         this.ship.drawShip()
 
+        this.shipsArr.forEach((ship) => {
+            ship.drawShip();
+        })
 
         
         //this.pipe.drawPipe()
