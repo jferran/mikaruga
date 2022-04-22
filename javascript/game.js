@@ -19,8 +19,9 @@ class Game {
 
         this.myShip = new MyShip();
         this.ship = new Ship(40, 40, "black");
-        this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(140, 40, "white"), new Ship(180, 40, "white")]
-        this.bulletShipArr = []
+        this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(160, 40, "black"), new Ship(220, 40, "white")]
+        this.bulletEnemyShipArr = []
+        this.bulletMyShipArr = []
         //this.shipArr = [new Ship(40, 50)]
         
         this.isGameOn=true
@@ -29,10 +30,31 @@ class Game {
     //todos los metodos que regulan nuestro juego, loop, colisiones, etc
 
     myShipShoot = () => {
-        this.bulletShipArr.push(new Bullet(this.myShip.x+this.myShip.w/2, this.myShip.y, "up", this.myShip.color))
+        this.bulletEnemyShipArr.push(new Bullet(this.myShip.x+this.myShip.w/2, this.myShip.y, "up", this.myShip.color))
     }
     deleteBulletsShip = () => {
-        if(this.bulletShipArr.length>0 && this.bulletShipArr[0].y-this.bulletShipArr[0].h<0) this.bulletShipArr.shift()
+        if(this.bulletEnemyShipArr.length>0 && this.bulletEnemyShipArr[0].y-this.bulletEnemyShipArr[0].h<0) this.bulletEnemyShipArr.shift()
+    }
+
+    collisionControl = (spaceShip, bulletsArr) => {
+
+        bulletsArr.forEach((bullet)=>{
+            if (spaceShip.x < bullet.x + bullet.w &&
+                spaceShip.x + spaceShip.w > bullet.x &&
+                spaceShip.y < bullet.y + bullet.h &&
+                spaceShip.h + spaceShip.y > bullet.y) {
+                // collision detected!
+                console.log("Collision");
+            } else {
+                // no collision
+                //this.color("blue");
+            }
+
+
+        })
+
+        
+        
     }
 
     gameLoop = (timeStamp) => {
@@ -59,23 +81,27 @@ class Game {
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
 
-        this.shipsArr.forEach((ship) => {
+        this.shipsArr.forEach((ship, index) => {
             ship.move();
-            //this.bulletShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
+            //this.bulletEnemyShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
 
-            if(timeStamp*10%2===0)
-                this.bulletShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
+            if((timeStamp*10+index)%2===0)
+                this.bulletEnemyShipArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
         })
 
 
 /*
         if(timeStamp*10%2===0)
-        this.bulletShipArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
+        this.bulletEnemyShipArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
   */      
-        this.bulletShipArr.forEach((bullet) => {
+
+        
+        this.bulletEnemyShipArr.forEach((bullet) => {
             bullet.move()
         })
         this.deleteBulletsShip()
+
+
 
       
 
@@ -90,7 +116,7 @@ class Game {
 
         
         //this.pipe.drawPipe()
-        this.bulletShipArr.forEach(bullet => bullet.draw())
+        this.bulletEnemyShipArr.forEach(bullet => bullet.draw())
 
         // 4. control y recursion
         if(this.isGameOn) requestAnimationFrame(this.gameLoop)
