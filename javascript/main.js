@@ -40,11 +40,15 @@ const keyPress = (event) =>{
     }
     else if(event.code==="ArrowLeft"){
         game.myShip.moveLeft();
-
     }
     else if(event.code==="ArrowRight"){
         game.myShip.moveRight();
-
+    }
+    else if(event.code==="ArrowUp"){
+        game.myShip.moveUp();
+    }
+    else if(event.code==="ArrowDown"){
+        game.myShip.moveDown();
     }
 }
 

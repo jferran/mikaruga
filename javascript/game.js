@@ -18,8 +18,9 @@ class Game {
         this.bg.src = "./images/bg.png" //quizas lo modifiquemos luego
 
         this.myShip = new MyShip();
-        this.ship = new Ship(40, 40);
-        this.bulletArr = []
+        this.ship = new Ship(40, 40, "black");
+        this.shipsArr = []
+        this.bulletShipArr = []
         //this.shipArr = [new Ship(40, 50)]
         
         this.isGameOn=true
@@ -28,11 +29,10 @@ class Game {
     //todos los metodos que regulan nuestro juego, loop, colisiones, etc
 
     myShipShoot = () => {
-        this.bulletArr.push(new Bullet(this.myShip.x+this.myShip.w/2, this.myShip.y, "up", this.myShip.color))
+        this.bulletShipArr.push(new Bullet(this.myShip.x+this.myShip.w/2, this.myShip.y, "up", this.myShip.color))
     }
-    deleteBullets = () => {
-        if(this.bulletArr[0].y-this.bulletArr[0].h<0) this.bulletArr.shift()
-
+    deleteBulletsShip = () => {
+        if(this.bulletShipArr.length>0 && this.bulletShipArr[0].y-this.bulletShipArr[0].h<0) this.bulletShipArr.shift()
     }
 
     gameLoop = (timeStamp) => {
@@ -53,16 +53,25 @@ class Game {
 
         
         // 2. acciones o movimiento de los elementos
-        //metodo del pollito
+        
         this.ship.move(secondsPassed);
         
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
+/*
+        this.shipsArr.forEach((ship) => {
+            this.bulletShipArr.push(new Bullet(ship.x+ship.w/w, ship.y, "down", ship.color))
+        })
+*/
 
-        this.bulletArr.forEach((bullet) => {
+
+        if(timeStamp*10%2===0)
+        this.bulletShipArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
+        
+        this.bulletShipArr.forEach((bullet) => {
             bullet.move()
         })
-        //this.deleteBullets()
+        this.deleteBulletsShip()
 
       
 
@@ -74,7 +83,7 @@ class Game {
 
         
         //this.pipe.drawPipe()
-        this.bulletArr.forEach(bullet => bullet.draw())
+        this.bulletShipArr.forEach(bullet => bullet.draw())
 
         // 4. control y recursion
         if(this.isGameOn) requestAnimationFrame(this.gameLoop)

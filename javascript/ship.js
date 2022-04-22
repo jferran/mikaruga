@@ -1,5 +1,5 @@
 class Ship {
-    constructor(x, y) {
+    constructor(x, y, color) {
 
         this.x=x;
         this.y=y;

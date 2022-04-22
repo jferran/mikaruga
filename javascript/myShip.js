@@ -33,11 +33,26 @@ class MyShip {
     }
 
     moveLeft = () => {
-        this.x=this.x-this.speed
+        if(this.x-this.speed>0)
+            this.x=this.x-this.speed
+        else this.x=0
     }
     moveRight = () => {
-        this.x=this.x+this.speed
+        if(this.x+this.speed<canvas.width-this.w)
+            this.x=this.x+this.speed
+        else this.x=canvas.width-this.w
     }
+    moveUp = () => {
+        if(this.y-this.speed>0)
+            this.y-=this.speed
+        else this.y=0
+    }
+    moveDown = () => {
+        if(this.y+this.speed<canvas.height-this.h)
+            this.y+=this.speed
+        else this.y=canvas.height-this.h
+    }
+
     /*
     shoot = () => {
         game.bulletsArr.push(new Bullet(this.x, this.y, "up"))
