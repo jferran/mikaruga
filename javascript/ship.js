@@ -9,6 +9,7 @@ class Ship {
         this.img = new Image();
         this.img.src = "./images/nave.svg"
         this.speed=1;
+        this.life=1;
 
         this.color=color
         this.direction="right"
@@ -35,12 +36,18 @@ class Ship {
         })
     }
     draw = () => {
-        this.drawShip()
+        if(this.visible)this.drawShip()
         //this.drawBullets()
     }
     shoot = () => {
         this.bullets.push(new Bullet(this, "down"))
         console.log("enemy bullet 0 x:",this.bullets[0].x)
+    }
+    deleteBullets = () => {
+        this.bullets.forEach((bullet, index)=>{
+            if (!bullet.visible) this.bullets.slice(index, 1)
+
+        })
     }
 
     move = (secondsPassed) => {

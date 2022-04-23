@@ -18,7 +18,7 @@ class Game {
         this.bg.src = "./images/bg.png" //quizas lo modifiquemos luego
 
         this.myShip = new MyShip();
-        this.ship = new Ship(40, 40, "black");
+        //this.ship = new Ship(40, 40, "black");
         this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(160, 40, "black"), new Ship(220, 40, "white")]
         this.bulletsEnemyArr = []
         this.bulletsMyShipArr = []
@@ -50,12 +50,11 @@ class Game {
                 // collision detected!
                 bullet.visible=false;
                 console.log("Collision");
-                if(typeof spaceShip === "Ship"){
-                    console.log("against my ship")
-                }
-                else{
-                    console.log("against enemy")
-                }
+               
+                spaceShip.life-=1
+                if (spaceShip.life<1) spaceShip.visible=false
+                
+               
             } else {
                 //console.log("no collision")
                 // no collision
@@ -97,7 +96,7 @@ class Game {
         
         // 2. acciones o movimiento de los elementos
         
-        this.ship.move(secondsPassed);
+        //this.ship.move(secondsPassed);
         
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
@@ -105,6 +104,7 @@ class Game {
         this.shipsArr.forEach((ship, index) => {
             
             //this.bulletsEnemyArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
+            ship.deleteBullets()
 
             if((timeStamp*10+index)%2===0){
                 ship.shoot()
@@ -136,13 +136,13 @@ class Game {
         this.shipsArr.forEach((ship)=>{
             this.collisionControl(this.myShip, ship.bullets)
             this.collisionControl(ship, this.myShip.bullets)
-
         })
 
 
 //        this.deleteBulletsShip()
 
 
+        this.myShip.deleteBullets()
 
       
 

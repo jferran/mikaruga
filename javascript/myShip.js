@@ -9,7 +9,8 @@ class MyShip {
         this.img = new Image();
         this.img.src = "./images/nave.svg"
         this.speed=20;
-        //this.jumpSpeed=30
+        this.life=100
+        this.visible=true
 
         //true = black, false = white
         this.color="black"
@@ -78,6 +79,12 @@ class MyShip {
     shoot = () => {
         this.bullets.push(new Bullet(this, "up"))
         console.log("my bullet x:",this.bullets[0].x)
+    }
+    deleteBullets = () => {
+        this.bullets.forEach((bullet, index)=>{
+            if (!bullet.visible) this.bullets.slice(index, 1)
+
+        })
     }
     /*
     shoot = () => {
