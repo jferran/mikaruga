@@ -38,24 +38,38 @@ class Game {
     }
 
     collisionControl = (spaceShip, bulletsArr) => {
+        //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
-        bulletsArr.forEach((bullet)=>{
-            if (spaceShip.x < bullet.x + bullet.w &&
-                spaceShip.x + spaceShip.w > bullet.x &&
-                spaceShip.y < bullet.y + bullet.h &&
-                spaceShip.h + spaceShip.y > bullet.y) {
+        bulletsArr.forEach((bullet, index)=>{
+            //console.log("bullet", bullet.x, bullet.y, 20, 20)
+            if (bullet.visible &&
+                spaceShip.x < bullet.x + 10 &&
+                spaceShip.x + spaceShip.w > bullet.x - 5 &&
+                spaceShip.y < bullet.y - 10 &&
+                spaceShip.h + spaceShip.y > bullet.y + 10 ) {
                 // collision detected!
+                bullet.visible=false;
                 console.log("Collision");
             } else {
+                //console.log("no collision")
                 // no collision
                 //this.color("blue");
             }
 
+/*
+    if (rect1.x < rect2.x + rect2.w &&
+        rect1.x + rect1.w > rect2.x &&
+        rect1.y < rect2.y + rect2.h &&
+        rect1.h + rect1.y > rect2.y) {
+        // collision detected!
+        this.color("green");
+    } 
+
+
+*/
+
 
         })
-
-        
-        
     }
 
     gameLoop = (timeStamp) => {
@@ -102,6 +116,10 @@ class Game {
         this.bulletsEnemyArr.forEach((bullet) => {
             bullet.move()
         })
+        this.collisionControl(this.myShip, this.bulletsEnemyArr)
+
+        //this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
+
         this.deleteBulletsShip()
 
 
