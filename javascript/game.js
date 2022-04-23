@@ -103,12 +103,16 @@ class Game {
         scoreDOM.innerText=Math.floor(this.score)
 
         this.shipsArr.forEach((ship, index) => {
-            ship.move();
+            
             //this.bulletsEnemyArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
 
-            if((timeStamp*10+index)%2===0)
-                this.bulletsEnemyArr.push(new Bullet(ship, "down"))
+            if((timeStamp*10+index)%2===0){
+                ship.shoot()
+            }
+                ship.move();
+                ship.moveBullets()
         })
+        this.myShip.moveBullets()
 
 
 /*
@@ -120,15 +124,23 @@ class Game {
         this.bulletsMyShipArr.forEach((bullet) => {
             bullet.move()
         })  
-*/
+
         this.bulletsEnemyArr.forEach((bullet) => {
             bullet.move()
         })
-        this.collisionControl(this.myShip, this.bulletsEnemyArr)
+*/
 
-        this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
+//        this.collisionControl(this.myShip, this.bulletsEnemyArr)
 
-        this.deleteBulletsShip()
+//        this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
+        this.shipsArr.forEach((ship)=>{
+            this.collisionControl(this.myShip, ship.bullets)
+            this.collisionControl(ship, this.myShip.bullets)
+
+        })
+
+
+//        this.deleteBulletsShip()
 
 
 
@@ -137,16 +149,21 @@ class Game {
         // 3. dibujar los elementos
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height)
         this.myShip.draw()
-        this.ship.drawShip()
+        this.myShip.drawBullets()
+
+        
+        
+        //this.ship.drawShip()
 
         this.shipsArr.forEach((ship) => {
-            ship.drawShip();
+            ship.draw();
+            ship.drawBullets();
         })
 
         
         //this.pipe.drawPipe()
-        this.bulletsEnemyArr.forEach(bullet => bullet.draw())
-        this.bulletsMyShipArr.forEach(bullet => bullet.draw())
+ //       this.bulletsEnemyArr.forEach(bullet => bullet.draw())
+ //       this.bulletsMyShipArr.forEach(bullet => bullet.draw())
 
         // 4. control y recursion
         if(this.isGameOn) requestAnimationFrame(this.gameLoop)

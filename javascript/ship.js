@@ -17,8 +17,30 @@ class Ship {
         this.bullets = []
     }
 
+
+    //
+
     drawShip = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
+    }
+    drawBullets = () => {
+        this.bullets.forEach(bullet => {
+            //bullet.move()
+            bullet.draw()
+        })
+    }
+    moveBullets = () => {
+        this.bullets.forEach(bullet => {
+            bullet.move()
+        })
+    }
+    draw = () => {
+        this.drawShip()
+        //this.drawBullets()
+    }
+    shoot = () => {
+        this.bullets.push(new Bullet(this, "down"))
+        console.log("enemy bullet 0 x:",this.bullets[0].x)
     }
 
     move = (secondsPassed) => {

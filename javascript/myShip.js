@@ -18,18 +18,28 @@ class MyShip {
 
     drawShip = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
-        console.log("canvas: "+canvas.height)
+        //console.log("canvas: "+canvas.height)
     }
     drawBullets = () => {
         this.bullets.forEach(bullet => {
             bullet.draw()
+            //bullet.move()
+        })
+    }
+    moveBullets = () => {
+        this.bullets.forEach(bullet => {
             bullet.move()
         })
     }
-    draw = () => {
+/*
+    move = () => {
         this.drawShip()
         this.drawBullets()
-
+    }
+*/
+    draw = () => {
+        this.drawShip()
+        //this.drawBullets()
     }
 
     switchColor = () => {
