@@ -42,7 +42,7 @@ class Game {
 
         bulletsArr.forEach((bullet, index)=>{
             //console.log("bullet", bullet.x, bullet.y, 20, 20)
-            if (bullet.visible &&
+            if (bullet.visible && bullet.color!==spaceShip.color &&
                 spaceShip.x < bullet.x + bullet.radius &&
                 spaceShip.x + spaceShip.w > bullet.x - bullet.radius &&
                 spaceShip.y < bullet.y + bullet.radius &&
@@ -50,6 +50,12 @@ class Game {
                 // collision detected!
                 bullet.visible=false;
                 console.log("Collision");
+                if(typeof spaceShip === "Ship"){
+                    console.log("against my ship")
+                }
+                else{
+                    console.log("against enemy")
+                }
             } else {
                 //console.log("no collision")
                 // no collision
@@ -110,15 +116,17 @@ class Game {
         this.bulletsEnemyArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
   */      
 
+        /*
         this.bulletsMyShipArr.forEach((bullet) => {
             bullet.move()
-        })        
+        })  
+*/
         this.bulletsEnemyArr.forEach((bullet) => {
             bullet.move()
         })
         this.collisionControl(this.myShip, this.bulletsEnemyArr)
 
-        //this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
+        this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
 
         this.deleteBulletsShip()
 
@@ -128,7 +136,7 @@ class Game {
 
         // 3. dibujar los elementos
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height)
-        this.myShip.drawShip()
+        this.myShip.draw()
         this.ship.drawShip()
 
         this.shipsArr.forEach((ship) => {

@@ -24,6 +24,9 @@ const startGame = () => {
     console.log(game)
 
     window.addEventListener("keydown", keyPress)
+
+
+
     game.gameLoop();
 }
 
@@ -32,7 +35,8 @@ const startGame = () => {
 const keyPress = (event) =>{
     if (event.code==="Space"){
         console.log("apretando barra espacio")
-        game.myShipShoot();
+        //game.myShipShoot();
+        game.myShip.shoot();
     }
     else if(event.ctrlKey){
         game.myShip.switchColor();

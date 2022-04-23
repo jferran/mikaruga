@@ -13,11 +13,23 @@ class MyShip {
 
         //true = black, false = white
         this.color="black"
+        this.bullets = []
     }
 
     drawShip = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
         console.log("canvas: "+canvas.height)
+    }
+    drawBullets = () => {
+        this.bullets.forEach(bullet => {
+            bullet.draw()
+            bullet.move()
+        })
+    }
+    draw = () => {
+        this.drawShip()
+        this.drawBullets()
+
     }
 
     switchColor = () => {
@@ -53,6 +65,10 @@ class MyShip {
         else this.y=canvas.height-this.h
     }
 
+    shoot = () => {
+        this.bullets.push(new Bullet(this, "up"))
+        console.log("my bullet x:",this.bullets[0].x)
+    }
     /*
     shoot = () => {
         game.bulletsArr.push(new Bullet(this.x, this.y, "up"))

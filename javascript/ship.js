@@ -13,8 +13,8 @@ class Ship {
         this.color=color
         this.direction="right"
 
-        
-        
+        this.visible = true
+        this.bullets = []
     }
 
     drawShip = () => {
