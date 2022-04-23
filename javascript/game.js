@@ -43,10 +43,10 @@ class Game {
         bulletsArr.forEach((bullet, index)=>{
             //console.log("bullet", bullet.x, bullet.y, 20, 20)
             if (bullet.visible &&
-                spaceShip.x < bullet.x + 10 &&
-                spaceShip.x + spaceShip.w > bullet.x - 5 &&
-                spaceShip.y < bullet.y - 10 &&
-                spaceShip.h + spaceShip.y > bullet.y + 10 ) {
+                spaceShip.x < bullet.x + bullet.radius &&
+                spaceShip.x + spaceShip.w > bullet.x - bullet.radius &&
+                spaceShip.y < bullet.y + bullet.radius &&
+                spaceShip.h + spaceShip.y > bullet.y - bullet.radius ) {
                 // collision detected!
                 bullet.visible=false;
                 console.log("Collision");
