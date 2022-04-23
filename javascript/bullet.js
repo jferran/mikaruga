@@ -1,11 +1,11 @@
 class Bullet{
-    constructor(x, y, direction, color){
-        this.x=x;
-        this.y=y;
+    constructor(ship, direction){
+        this.x=ship.x+ship.w/2;
+        this.y=ship.y;
         this.h=10
         this.speed=1
         this.direction=direction;
-        this.color=color;
+        this.color=ship.color;
     }
     
     draw(){
