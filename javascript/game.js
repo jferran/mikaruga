@@ -148,8 +148,10 @@ class Game {
 
         // 3. dibujar los elementos
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height)
-        this.myShip.draw()
+        
         this.myShip.drawBullets()
+        this.myShip.draw()
+        this.myShip.drawLife()
 
         
         

@@ -17,6 +17,15 @@ class MyShip {
         this.bullets = []
     }
 
+    drawLife = () => {
+        ctx.fillStyle = "blue";
+        for (let i=0; i<this.life; i++){
+
+            ctx.fillRect(i+10, 10, 11, 20);
+        }
+        
+    }
+
     drawShip = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h)
         //console.log("canvas: "+canvas.height)
