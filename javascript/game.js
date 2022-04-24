@@ -18,8 +18,14 @@ class Game {
         this.bg.src = "./images/bg.png" //quizas lo modifiquemos luego
 
         this.myShip = new MyShip();
+
+        this.gameEnemyPhases = [{movePattern: "LeftRightLoop", 
+                                ships: [new Ship(40, 40, "black"), 
+                                        new Ship(100, 40, "white"), 
+                                        new Ship(160, 40, "black"), 
+                                        new Ship(220, 40, "white")]}]
         
-        this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(160, 40, "black"), new Ship(220, 40, "white")]
+        this.shipsArr = [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
         //this.bulletsEnemyArr = []
         //this.bulletsMyShipArr = []
         

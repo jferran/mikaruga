@@ -1,5 +1,5 @@
 class Ship {
-    constructor(x, y, color) {
+    constructor(x, y, color, movePattern, loop) {
 
         this.x=x;
         this.y=y;
@@ -13,6 +13,8 @@ class Ship {
 
         this.color=color
         this.direction="right"
+        this.movePattern=movePattern;
+        this.loop=loop
 
         this.visible = true
         this.bullets = []
@@ -52,25 +54,28 @@ class Ship {
 
     move = (secondsPassed) => {
         //console.log("pollito bajando");
-        if(this.direction==="right"){
-            if((this.x+ this.speed)<canvas.width-this.w) {
-                this.x=this.x+ this.speed
+        if(this.movePattern==="LeftRightLoop"){
+            if(this.direction==="right"){
+                if((this.x+ this.speed)<canvas.width-this.w) {
+                    this.x=this.x+ this.speed
+                }
+                else if (this.loop){
+                    this.x=canvas.width-this.w
+                    this.direction="left"
+                }
+                else this.visible=false
             }
-            else {
-                this.x=canvas.width-this.w
-                this.direction="left"
+            else if (this.direction==="left"){
+                if((this.x- this.speed)>0) {
+                    this.x=this.x- this.speed
+                }
+                else if (this.loop){
+                    this.x=0
+                    this.direction="right"
+                }
+                else this.visible=false;
             }
         }
-        else if (this.direction==="left"){
-            if((this.x- this.speed)>0) {
-                this.x=this.x- this.speed
-            }
-            else {
-                this.x=0
-                this.direction="right"
-            }
-        }
-
 
     }
 
