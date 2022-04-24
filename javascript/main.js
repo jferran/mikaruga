@@ -63,4 +63,3 @@ restartBtn.addEventListener("click", startGame)
 
 
 
-

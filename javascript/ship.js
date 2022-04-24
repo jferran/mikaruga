@@ -40,7 +40,7 @@ class Ship {
         //this.drawBullets()
     }
     shoot = () => {
-        this.bullets.push(new Bullet(this, "down"))
+        if(this.life>0)this.bullets.push(new Bullet(this, "down"))
         console.log("enemy bullet 0 x:",this.bullets[0].x)
     }
     deleteBullets = () => {
