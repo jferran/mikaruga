@@ -18,11 +18,11 @@ class Game {
         this.bg.src = "./images/bg.png" //quizas lo modifiquemos luego
 
         this.myShip = new MyShip();
-        //this.ship = new Ship(40, 40, "black");
+        
         this.shipsArr = [new Ship(40, 40, "black"), new Ship(100, 40, "white"), new Ship(160, 40, "black"), new Ship(220, 40, "white")]
-        this.bulletsEnemyArr = []
-        this.bulletsMyShipArr = []
-        //this.shipArr = [new Ship(40, 50)]
+        //this.bulletsEnemyArr = []
+        //this.bulletsMyShipArr = []
+        
         
         this.isGameOn=true
         this.score=0;
@@ -32,16 +32,16 @@ class Game {
     myShipShoot = () => {
         this.bulletsMyShipArr.push(new Bullet(this.myShip, "up"))
     }
+    /*
     deleteBulletsShip = () => {
         if(this.bulletsEnemyArr.length>0 && this.bulletsEnemyArr[0].y>canvas.height) this.bulletsEnemyArr.shift()
         if(this.bulletsMyShipArr.length>0 && this.bulletsMyShipArr[0].y+this.bulletsMyShipArr[0].h<0) this.bulletsMyShipArr.shift()
-    }
+    }*/
 
     collisionControl = (spaceShip, bulletsArr) => {
         //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
-        bulletsArr.forEach((bullet, index)=>{
-            //console.log("bullet", bullet.x, bullet.y, 20, 20)
+        bulletsArr.forEach((bullet)=>{
             if (bullet.visible && bullet.color!==spaceShip.color &&
                 spaceShip.x < bullet.x + bullet.radius &&
                 spaceShip.x + spaceShip.w > bullet.x - bullet.radius &&
@@ -53,32 +53,11 @@ class Game {
                
                 spaceShip.life-=1
                 if (spaceShip.life<1) spaceShip.visible=false
-                
-               
-            } else {
-                //console.log("no collision")
-                // no collision
-                //this.color("blue");
             }
-
-/*
-    if (rect1.x < rect2.x + rect2.w &&
-        rect1.x + rect1.w > rect2.x &&
-        rect1.y < rect2.y + rect2.h &&
-        rect1.h + rect1.y > rect2.y) {
-        // collision detected!
-        this.color("green");
-    } 
-
-
-*/
-
-
         })
     }
 
     gameLoop = (timeStamp) => {
-        //console.log("juego andando")
         //console.log(timeStamp)
             
         // Calculate the number of seconds passed since the last frame
@@ -96,8 +75,6 @@ class Game {
         
         // 2. acciones o movimiento de los elementos
         
-        //this.ship.move(secondsPassed);
-        
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
 
@@ -114,58 +91,26 @@ class Game {
         })
         this.myShip.moveBullets()
 
-
-/*
-        if(timeStamp*10%2===0)
-        this.bulletsEnemyArr.push(new Bullet(this.ship.x+this.ship.w/2, this.ship.y, "down", this.ship.color))
-  */      
-
-        /*
-        this.bulletsMyShipArr.forEach((bullet) => {
-            bullet.move()
-        })  
-
-        this.bulletsEnemyArr.forEach((bullet) => {
-            bullet.move()
-        })
-*/
-
-//        this.collisionControl(this.myShip, this.bulletsEnemyArr)
-
-//        this.shipsArr.forEach((enemy)=>this.collisionControl(enemy, this.bulletsMyShipArr))
         this.shipsArr.forEach((ship)=>{
             this.collisionControl(this.myShip, ship.bullets)
             this.collisionControl(ship, this.myShip.bullets)
         })
 
-
-//        this.deleteBulletsShip()
-
-
         this.myShip.deleteBullets()
 
       
-
         // 3. dibujar los elementos
         ctx.drawImage(this.bg, 0, 0, canvas.width, canvas.height)
         
         this.myShip.drawBullets()
+        //this.ship.drawShip()
         this.myShip.draw()
         this.myShip.drawLife()
-
-        
-        
-        //this.ship.drawShip()
 
         this.shipsArr.forEach((ship) => {
             ship.draw();
             ship.drawBullets();
         })
-
-        
-        //this.pipe.drawPipe()
- //       this.bulletsEnemyArr.forEach(bullet => bullet.draw())
- //       this.bulletsMyShipArr.forEach(bullet => bullet.draw())
 
         // 4. control y recursion
         if(this.isGameOn) requestAnimationFrame(this.gameLoop)
