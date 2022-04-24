@@ -42,7 +42,7 @@ class Game {
         //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
         bulletsArr.forEach((bullet)=>{
-            if (bullet.visible && bullet.color!==spaceShip.color &&
+            if (bullet.visible && spaceShip.visible && bullet.color!==spaceShip.color &&
                 spaceShip.x < bullet.x + bullet.radius &&
                 spaceShip.x + spaceShip.w > bullet.x - bullet.radius &&
                 spaceShip.y < bullet.y + bullet.radius &&
@@ -97,6 +97,10 @@ class Game {
         })
 
         this.myShip.deleteBullets()
+
+        this.shipsArr.forEach((ship, index)=>{
+            if(!ship.visible && ship.bullets.length===0)this.shipsArr.splice(index, 1)
+        })
 
       
         // 3. dibujar los elementos
