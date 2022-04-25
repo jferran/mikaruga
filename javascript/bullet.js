@@ -1,10 +1,18 @@
 class Bullet{
-    constructor(ship, direction){
+    constructor(ship, direction, superBeam){
         this.x=ship.x+ship.w/2;
         this.y=ship.y;
         
         //this.h=10
         this.radius=10
+        this.superBeam=false
+        
+        if(superBeam){
+            this.superBeam=true
+            if(ship.color==="white") this.radius+=ship.superBeamWhite*3
+            else {this.radius+=ship.superBeamBlack*3;}
+        }
+        
         
         this.speed=1
         this.direction=direction;
@@ -36,7 +44,8 @@ class Bullet{
             this.x - this.radius*2 > canvas.width ||
             this.x + this.radius*2 < 0
             ){
-                this.visible=false}
+                this.visible=false
+            }
     }
 
 }

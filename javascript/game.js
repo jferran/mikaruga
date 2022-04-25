@@ -23,15 +23,14 @@ class Game {
         this.gameLevels = [
             [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)],
             [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)],
-            [new Ship(40, 40, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]               
+            [new Ship(40, 40, "black", "UpDown", true), new Ship(40, -60, "black", "UpDown", true)]               
             ]
-
+/*
         this.verticalLevelTest = [
-            [new Ship(40, 40, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]
+            [new Ship(40, -60, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]
         ]
-
-        //this.gameLevels=this.verticalLevelTest
-        
+        this.gameLevels=this.verticalLevelTest
+  */      
         this.shipsArr = []
         //this.killedShipsArr = []
         
@@ -62,25 +61,19 @@ class Game {
                 spaceShip.y < bullet.y + bullet.radius &&
                 spaceShip.h + spaceShip.y > bullet.y - bullet.radius ) {
                 // collision detected!
-                bullet.visible=false;
+                if(bullet.superBeam===false)bullet.visible=false;
                 //console.log("Collision");
                
                 if (bullet.color!==spaceShip.color) {
                     spaceShip.life-=1
                     if (spaceShip.life<1) spaceShip.visible=false
                 }
-                
+                //in case it's our spaceship, check for charging superbeam
                 else if (typeof spaceShip.superBeamWhite !== undefined || typeof spaceShip.superBeamBlack !== undefined){
                     if(bullet.color === "white")spaceShip.superBeamWhite++
                     else spaceShip.superBeamBlack++
                 }
-                
-                /*
-                if(typeof spaceShip.superBeamBlack !== undefined) console.log("superbeamBlack: ", spaceShip.superBeamBlack)
-                if(typeof spaceShip.superBeamWhite !== undefined) console.log("superbeamWhite: ", spaceShip.superBeamWhite)
-                */
             }
-            //if (bullet.color==="white" && typeof this.superBeamWhite !== undefined)
         })
     }
     colisionSpaceShipsControl = () =>{

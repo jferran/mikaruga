@@ -102,10 +102,14 @@ class MyShip {
         this.bullets.push(new Bullet(this, "up"))
         //console.log("my bullet x:",this.bullets[0].x)
     }
+    shootSuperBeam = () => {
+        this.bullets.push(new Bullet(this, "up", true))
+        if(this.color==="white")this.superBeamWhite=0
+        else this.superBeamBlack=0
+    }
     deleteBullets = () => {
         this.bullets.forEach((bullet, index)=>{
             if (!bullet.visible) this.bullets.slice(index, 1)
-
         })
     }
     /*
