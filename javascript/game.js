@@ -69,13 +69,12 @@ class Game {
                     spaceShip.life-=1
                     if (spaceShip.life<1) spaceShip.visible=false
                 }
-                /*
+                
                 else if (typeof spaceShip.superBeamWhite !== undefined || typeof spaceShip.superBeamBlack !== undefined){
                     if(bullet.color === "white")spaceShip.superBeamWhite++
                     else spaceShip.superBeamBlack++
-                }*/
-                else if (bullet.color === "white" && typeof spaceShip.superBeamWhite !== undefined) spaceShip.superBeamWhite++
-                else if (bullet.color === "black" && typeof spaceShip.superBeamBlack !== undefined) spaceShip.superBeamBlack++
+                }
+                
                 /*
                 if(typeof spaceShip.superBeamBlack !== undefined) console.log("superbeamBlack: ", spaceShip.superBeamBlack)
                 if(typeof spaceShip.superBeamWhite !== undefined) console.log("superbeamWhite: ", spaceShip.superBeamWhite)
