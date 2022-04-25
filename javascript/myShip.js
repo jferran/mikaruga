@@ -9,7 +9,11 @@ class MyShip {
         this.img = new Image();
         this.img.src = "./images/nave.svg"
         this.speed=20;
-        this.life=10
+        this.life=20
+        this.superBeamWhite=0
+        this.superBeamBlack=0
+
+
         this.visible=true
 
         //true = black, false = white
@@ -20,10 +24,19 @@ class MyShip {
     drawLife = () => {
         ctx.fillStyle = "blue";
         for (let i=0; i<this.life; i++){
-
             ctx.fillRect(i+10, 10, 11, 20);
         }
-        
+    }
+
+    drawBeamsCharge = () => {
+        ctx.fillStyle = "black";
+        for (let i=0; i<this.superBeamBlack; i++){
+            ctx.fillRect(i+10, 35, 11, 20);
+        }
+        ctx.fillStyle = "white";
+        for (let i=0; i<this.superBeamWhite; i++){
+            ctx.fillRect(i+10, 60, 11, 20);
+        }
     }
 
     drawShip = () => {

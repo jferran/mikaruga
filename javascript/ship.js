@@ -78,8 +78,6 @@ class Ship {
         //console.log("pollito bajando");
         // x0=0, x1=-1
         if(this.movePattern==="LeftRightLoop"){
-            
-            
             if(this.direction==="right"){
                 if((this.x+ this.speed)<canvas.width-this.w) {
                     this.x=this.x+ this.speed
@@ -94,12 +92,19 @@ class Ship {
                 if((this.x- this.speed)>0) {
                     this.x=this.x- this.speed
                 }
+                //loop, change direction
                 else if (this.loop){
                     this.x=0
                     this.direction="right"
                 }
                 else this.visible=false;
             }
+        }
+        else if (this.movePattern==="UpDown"){
+            if((this.y - this.h + this.speed)<canvas.height){
+                this.y+= this.speed/4
+            }
+            else this.visible=false;
         }
 
     }

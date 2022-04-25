@@ -38,6 +38,11 @@ const keyPress = (event) =>{
         //game.myShipShoot();
         game.myShip.shoot();
     }
+    else if (event.shiftKey){
+        console.log("apretando shift")
+        //game.myShipShoot();
+        game.myShip.shoot();
+    }
     else if(event.ctrlKey){
         game.myShip.switchColor();
         console.log("switch")

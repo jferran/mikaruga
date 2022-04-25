@@ -22,15 +22,31 @@ class Game {
         this.level=0
         this.gameLevels = [
             [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)],
-            [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
-                           ]
-        //this.shipsArr = [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
+            [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)],
+            [new Ship(40, 40, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]               
+            ]
+
+        this.verticalLevelTest = [
+            [new Ship(40, 40, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]
+        ]
+
+        //this.gameLevels=this.verticalLevelTest
+        
         this.shipsArr = []
+        //this.killedShipsArr = []
         
         this.isGameOn=true
         this.score=0;
     }
     //todos los metodos que regulan nuestro juego, loop, colisiones, etc
+
+    gameOver = () => {
+        if(this.myShip.life<1) {
+            this.isGameOn=false
+            canvas.style.display='none';
+            gameOverScreen.style.display="flex"
+        }
+    }
 
     myShipShoot = () => {
         this.bulletsMyShipArr.push(new Bullet(this.myShip, "up"))
@@ -40,7 +56,7 @@ class Game {
         //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
         bulletsArr.forEach((bullet)=>{
-            if (bullet.visible && spaceShip.visible && bullet.color!==spaceShip.color &&
+            if (bullet.visible && spaceShip.visible && 
                 spaceShip.x < bullet.x + bullet.radius &&
                 spaceShip.x + spaceShip.w > bullet.x - bullet.radius &&
                 spaceShip.y < bullet.y + bullet.radius &&
@@ -49,21 +65,46 @@ class Game {
                 bullet.visible=false;
                 //console.log("Collision");
                
-                spaceShip.life-=1
-                if (spaceShip.life<1) spaceShip.visible=false
+                if (bullet.color!==spaceShip.color) {
+                    spaceShip.life-=1
+                    if (spaceShip.life<1) spaceShip.visible=false
+                }
+                /*
+                else if (typeof spaceShip.superBeamWhite !== undefined || typeof spaceShip.superBeamBlack !== undefined){
+                    if(bullet.color === "white")spaceShip.superBeamWhite++
+                    else spaceShip.superBeamBlack++
+                }*/
+                else if (bullet.color === "white" && typeof spaceShip.superBeamWhite !== undefined) spaceShip.superBeamWhite++
+                else if (bullet.color === "black" && typeof spaceShip.superBeamBlack !== undefined) spaceShip.superBeamBlack++
+                /*
+                if(typeof spaceShip.superBeamBlack !== undefined) console.log("superbeamBlack: ", spaceShip.superBeamBlack)
+                if(typeof spaceShip.superBeamWhite !== undefined) console.log("superbeamWhite: ", spaceShip.superBeamWhite)
+                */
+            }
+            //if (bullet.color==="white" && typeof this.superBeamWhite !== undefined)
+        })
+    }
+    colisionSpaceShipsControl = () =>{
+        this.shipsArr.forEach(ship => {
+            if (ship.visible &&
+                this.myShip.x < ship.x + ship.w &&
+                this.myShip.x + this.myShip.w > ship.x &&
+                this.myShip.y < ship.y + ship.h &&
+                this.myShip.h + this.myShip.y > ship.y) {
+                // collision detected!
+                this.myShip.life--
+                ship.visible=false
+                console.log("myship collided")
             }
         })
     }
     
     loadLevel = (level) => {
-        //if (this.shipsArr.length===0) {
-            //console.log(this.shipsArr)
             if(this.shipsArr.length===0 && level<this.gameLevels.length){
                 this.shipsArr=this.gameLevels[level]
                 console.log("lvl:", level)
                 this.level++;
             }
-        //}
     }
 
     gameLoop = (timeStamp) => {
@@ -83,6 +124,7 @@ class Game {
 
         
         // 2. acciones o movimiento de los elementos
+        this.gameOver()
         this.loadLevel(this.level);
         
         this.score=this.score+1/60
@@ -106,6 +148,7 @@ class Game {
             this.collisionControl(this.myShip, ship.bullets)
             this.collisionControl(ship, this.myShip.bullets)
         })
+        this.colisionSpaceShipsControl()
 
         this.myShip.deleteBullets()
 
@@ -121,6 +164,7 @@ class Game {
         //this.ship.drawShip()
         this.myShip.draw()
         this.myShip.drawLife()
+        this.myShip.drawBeamsCharge()
 
         this.shipsArr.forEach((ship) => {
             ship.draw();
