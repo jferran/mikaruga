@@ -14,6 +14,20 @@ class Ship {
         this.color=color
         this.direction="right"
         this.movePattern=movePattern;
+        this.moveX0X1
+        if(this.movePattern==="LeftRightLoop"){
+            this.moveX0X1=-1
+        }
+        //https://stackoverflow.com/questions/2922948/javascript-switch-vs-if-else-if-else
+        switch (this.movePattern){
+            case 'LeftRightLoop':
+                this.moveX0X1=-1
+                break
+            case 'RightLeftLoop':
+                this.moveX0X1=1
+                break
+        }
+
         this.loop=loop
 
         this.visible = true
@@ -39,22 +53,25 @@ class Ship {
     }
     draw = () => {
         if(this.visible)this.drawShip()
+        //this.drawShip()
         //this.drawBullets()
     }
     shoot = () => {
-        if(this.life>0)this.bullets.push(new Bullet(this, "down"))
+        if(this.life>0 && this.visible)this.bullets.push(new Bullet(this, "down"))
         console.log("enemy bullet 0 x:",this.bullets[0].x)
     }
     deleteBullets = () => {
         this.bullets.forEach((bullet, index)=>{
             if (!bullet.visible) this.bullets.slice(index, 1)
-
         })
     }
 
     move = (secondsPassed) => {
         //console.log("pollito bajando");
+        // x0=0, x1=-1
         if(this.movePattern==="LeftRightLoop"){
+            
+            
             if(this.direction==="right"){
                 if((this.x+ this.speed)<canvas.width-this.w) {
                     this.x=this.x+ this.speed

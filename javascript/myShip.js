@@ -9,7 +9,7 @@ class MyShip {
         this.img = new Image();
         this.img.src = "./images/nave.svg"
         this.speed=20;
-        this.life=100
+        this.life=10
         this.visible=true
 
         //true = black, false = white
