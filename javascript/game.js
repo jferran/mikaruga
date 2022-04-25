@@ -154,9 +154,10 @@ class Game {
         
         this.myShip.drawBullets()
         //this.ship.drawShip()
-        this.myShip.draw()
         this.myShip.drawLife()
         this.myShip.drawBeamsCharge()
+        this.myShip.draw()
+
 
         this.shipsArr.forEach((ship) => {
             ship.draw();
