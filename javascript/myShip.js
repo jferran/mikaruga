@@ -87,7 +87,7 @@ class MyShip {
 
     shoot = () => {
         this.bullets.push(new Bullet(this, "up"))
-        console.log("my bullet x:",this.bullets[0].x)
+        //console.log("my bullet x:",this.bullets[0].x)
     }
     deleteBullets = () => {
         this.bullets.forEach((bullet, index)=>{

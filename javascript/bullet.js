@@ -21,19 +21,22 @@ class Bullet{
             ctx.fill()
             ctx.stroke();
         }
-        
     }
 
     move(){
         if(this.direction==="up"){
             this.y=this.y-this.speed
-
         }
         else {
             this.y=this.y+this.speed
-
         }
         
+        if (this.y - this.radius*2 > canvas.height ||
+            this.y + this.radius*2 < 0 ||
+            this.x - this.radius*2 > canvas.width ||
+            this.x + this.radius*2 < 0
+            ){
+                this.visible=false}
     }
 
 }

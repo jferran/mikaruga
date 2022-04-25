@@ -19,16 +19,13 @@ class Game {
 
         this.myShip = new MyShip();
 
-        this.gameEnemyPhases = [{movePattern: "LeftRightLoop", 
-                                ships: [new Ship(40, 40, "black"), 
-                                        new Ship(100, 40, "white"), 
-                                        new Ship(160, 40, "black"), 
-                                        new Ship(220, 40, "white")]}]
-        
-        this.shipsArr = [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
-        //this.bulletsEnemyArr = []
-        //this.bulletsMyShipArr = []
-        
+        this.level=0
+        this.gameLevels = [
+            [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)],
+            [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
+                           ]
+        //this.shipsArr = [new Ship(40, 40, "black", "LeftRightLoop", true), new Ship(100, 40, "white", "LeftRightLoop", true), new Ship(160, 40, "black", "LeftRightLoop", false), new Ship(220, 40, "white", "LeftRightLoop", false)]
+        this.shipsArr = []
         
         this.isGameOn=true
         this.score=0;
@@ -38,11 +35,6 @@ class Game {
     myShipShoot = () => {
         this.bulletsMyShipArr.push(new Bullet(this.myShip, "up"))
     }
-    /*
-    deleteBulletsShip = () => {
-        if(this.bulletsEnemyArr.length>0 && this.bulletsEnemyArr[0].y>canvas.height) this.bulletsEnemyArr.shift()
-        if(this.bulletsMyShipArr.length>0 && this.bulletsMyShipArr[0].y+this.bulletsMyShipArr[0].h<0) this.bulletsMyShipArr.shift()
-    }*/
 
     collisionControl = (spaceShip, bulletsArr) => {
         //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
@@ -55,12 +47,23 @@ class Game {
                 spaceShip.h + spaceShip.y > bullet.y - bullet.radius ) {
                 // collision detected!
                 bullet.visible=false;
-                console.log("Collision");
+                //console.log("Collision");
                
                 spaceShip.life-=1
                 if (spaceShip.life<1) spaceShip.visible=false
             }
         })
+    }
+    
+    loadLevel = (level) => {
+        //if (this.shipsArr.length===0) {
+            //console.log(this.shipsArr)
+            if(this.shipsArr.length===0 && level<this.gameLevels.length){
+                this.shipsArr=this.gameLevels[level]
+                console.log("lvl:", level)
+                this.level++;
+            }
+        //}
     }
 
     gameLoop = (timeStamp) => {
@@ -80,12 +83,12 @@ class Game {
 
         
         // 2. acciones o movimiento de los elementos
+        this.loadLevel(this.level);
         
         this.score=this.score+1/60
         scoreDOM.innerText=Math.floor(this.score)
 
-        this.shipsArr.forEach((ship, index) => {
-            
+        this.shipsArr.forEach((ship, index) => {  
             //this.bulletsEnemyArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
             ship.deleteBullets()
 
@@ -95,6 +98,8 @@ class Game {
                 ship.move();
                 ship.moveBullets()
         })
+
+
         this.myShip.moveBullets()
 
         this.shipsArr.forEach((ship)=>{

@@ -58,11 +58,19 @@ class Ship {
     }
     shoot = () => {
         if(this.life>0 && this.visible)this.bullets.push(new Bullet(this, "down"))
-        console.log("enemy bullet 0 x:",this.bullets[0].x)
+        //console.log("enemy bullet 0 x:",this.bullets[0].x)
     }
     deleteBullets = () => {
         this.bullets.forEach((bullet, index)=>{
-            if (!bullet.visible) this.bullets.slice(index, 1)
+            
+            if (!bullet.visible /*||
+                
+                bullet.y - bullet.radius > canvas.height ||
+                bullet.y + bullet.radius < 0  ||
+                bullet.x - bullet.radius > canvas.width ||
+                bullet.x + bullet.radius < 0*/)
+
+                this.bullets.splice(index, 1)
         })
     }
 
