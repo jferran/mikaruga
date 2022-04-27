@@ -7,7 +7,7 @@ class MyShip {
         
 
         this.img = new Image();
-        this.img.src = "./images/Space-Fighter.svg"
+        this.img.src = "./images/Space-Fighter-2-black.svg"
         this.speed=20;
         this.life=20
         this.superBeamWhite=0
@@ -86,7 +86,7 @@ class MyShip {
         }
         else{
             this.color="black"
-            this.img.src = "./images/Space-Fighter.svg"
+            this.img.src = "./images/Space-Fighter-2-black.svg"
         }
     }
 
