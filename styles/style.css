@@ -8,12 +8,24 @@ body {
   }
   
   #start-btn, #restart-btn {
+  /*
     background-color: green;
     color: white;
     padding: 20px;
     font-size: 20px;
     margin-top: 40px;
     border-radius: 10px; 
+  */
+  font-size: 30px;
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em 7em 0.4em 7em;
+  box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 2rem #0400ff,
+              0 0 0.8rem #0400ff,
+              0 0 2.8rem #0400ff,
+              inset 0 0 1.3rem #0400ff;
   }
   
   .container {
