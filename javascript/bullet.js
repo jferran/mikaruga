@@ -15,7 +15,7 @@ class Bullet {
       }
     }
 
-    this.speed = 200;
+    this.speed = 400;
     this.direction = direction;
     this.color = ship.color;
     this.visible = true;
