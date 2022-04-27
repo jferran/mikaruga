@@ -16,6 +16,7 @@ body {
     margin-top: 40px;
     border-radius: 10px; 
   */
+/*
   font-size: 30px;
   border: 0.2rem solid #fff;
   border-radius: 2rem;
@@ -26,6 +27,44 @@ body {
               0 0 0.8rem #0400ff,
               0 0 2.8rem #0400ff,
               inset 0 0 1.3rem #0400ff;
+  */
+  font-size: 30px;
+  background-color: black;
+  border: 0.2rem solid #fff;
+  border-radius: 2rem;
+  padding: 0.4em 7em 0.4em 7em;        
+
+
+  }
+/* https://www.w3schools.com/howto/howto_css_glowing_text.asp */
+  .glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  /* https://css-tricks.com/how-to-create-neon-text-with-css/ */
+  .neonText {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #bc13fe,
+      0 0 82px #bc13fe,
+      0 0 92px #bc13fe,
+      0 0 102px #bc13fe,
+      0 0 151px #bc13fe;
+  }
+  
+  @-webkit-keyframes glow {
+    from {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #e60073, 0 0 20px #e60073, 0 0 25px #e60073, 0 0 30px #e60073, 0 0 35px #e60073;
+    }
+    
+    to {
+      box-shadow: 0 0 10px #fff, 0 0 15px #ff4da6, 0 0 20px #ff4da6, 0 0 25px #ff4da6, 0 0 30px #ff4da6, 0 0 35px #ff4da6, 0 0 40px #ff4da6;
+    }
   }
   
   .container {
