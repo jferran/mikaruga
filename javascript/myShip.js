@@ -22,20 +22,27 @@ class MyShip {
     }
 
     drawLife = () => {
-        ctx.fillStyle = "blue";
+        this.heart = new Image();
+        this.heart.src = "/images/1646656079PixelArt-Heart-1.svg"
+
+        //ctx.fillStyle = "blue";
+        //ctx.drawImage(this.heart, 10, 10, 20, 20)
+        let offset=10
         for (let i=0; i<this.life; i++){
-            ctx.fillRect(i+10, 10, 11, 20);
+            //ctx.fillRect(i+10, 10, 11, 20);
+            ctx.drawImage(this.heart, i+10+offset, 10, 20, 20)
+            offset+=20
         }
     }
 
     drawBeamsCharge = () => {
         ctx.fillStyle = "black";
-        for (let i=0; i<this.superBeamBlack; i++){
-            ctx.fillRect(i+10, 35, 11, 20);
+        for (let i=0, offset=10; i<this.superBeamBlack; i++, offset+=20){
+            ctx.fillRect(i+10+offset, 35, 11, 20);
         }
         ctx.fillStyle = "white";
-        for (let i=0; i<this.superBeamWhite; i++){
-            ctx.fillRect(i+10, 60, 11, 20);
+        for (let i=0, offset=10; i<this.superBeamWhite; i++, offset+=20){
+            ctx.fillRect(i+10+offset, 60, 11, 20);
         }
     }
 
