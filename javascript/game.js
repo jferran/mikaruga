@@ -193,8 +193,8 @@ class Game {
     //console.log(timeStamp)
 
     // Calculate the number of seconds passed since the last frame
-    secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-    oldTimeStamp = timeStamp;
+    //secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+    //oldTimeStamp = timeStamp;
 
     // Calculate fps
     fps = Math.round(1 / secondsPassed);
@@ -213,7 +213,8 @@ class Game {
       //this.bulletsEnemyArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))
       ship.deleteBullets();
 
-      if ((timeStamp * 10 + index) % 2 === 0) {
+      if (Math.floor(Math.random() * 90) === 4) {
+      //if ((timeStamp * 10 + index) % 2 === 0) {
         ship.shoot();
       }
       ship.move();
