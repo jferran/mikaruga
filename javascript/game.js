@@ -202,11 +202,20 @@ class Game {
     secondsPassed = (timeStamp - oldTimeStamp) / 1000;
     oldTimeStamp = timeStamp;
     console.log("oldt", oldTimeStamp)
-    secondsPassed = Math.min(secondsPassed, 0.007);
+    fps = Math.round(1 / secondsPassed);
+    //secondsPassed = Math.min(secondsPassed, 0.05);
+    
+    console.log("timestamp: ", timeStamp, "type: ", typeof timeStamp)
     //timePassed += secondsPassed
     if(isNaN(secondsPassed))secondsPassed=0.5
     // Calculate fps
-    fps = Math.round(1 / secondsPassed);
+    let notYet=true
+    while(notYet){
+        secondsPassed += (timeStamp) / 1000;
+        if (secondsPassed>20000) notYet=false;
+        console.log("secondsPassed in gameLoop: ", secondsPassed+ "typeof: ", typeof secondsPassed)
+    }
+    oldTimeStamp = timeStamp;
 
     // 1. borrar el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
