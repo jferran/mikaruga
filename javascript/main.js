@@ -33,7 +33,7 @@ function sound(src) {
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
-    console.log("iniciando juego")
+    //console.log("iniciando juego")
     startScreen.style.display="none"
     canvas.style.display="block"
     gameOverScreen.style.display="none"
@@ -50,7 +50,7 @@ const startGame = () => {
     //pero al trabajar con clases, nuestro juego sera toda una nueva clase
     //o sea, vamos a crear un nuevo objeto de lo que sera la clase Game
     game = new Game();
-    console.log(game)
+    //console.log(game)
 
     window.addEventListener("keydown", keyPress)
 
@@ -63,18 +63,18 @@ const startGame = () => {
 
 const keyPress = (event) =>{
     if (event.code==="Space"){
-        console.log("apretando barra espacio")
+        //console.log("apretando barra espacio")
         //game.myShipShoot();
         game.myShip.shoot();
     }
     else if (event.shiftKey){
-        console.log("apretando shift")
+        //console.log("apretando shift")
         //game.myShipShoot();
         game.myShip.shootSuperBeam();
     }
     else if(event.ctrlKey){
         game.myShip.switchColor();
-        console.log("switch")
+        //console.log("switch")
     }
     else if(event.code==="ArrowLeft"){
         game.myShip.moveLeft();

@@ -1,4 +1,4 @@
-console.log("desde el js Game");
+//console.log("desde el js Game");
 let secondsPassed;
 let oldTimeStamp = +new Date() - 60 * 5;
 let fps;
@@ -128,7 +128,7 @@ class Game {
         // collision detected!
         this.myShip.life--;
         ship.visible = false;
-        console.log("myship collided");
+        //console.log("myship collided");
       }
     });
   };
@@ -179,7 +179,7 @@ class Game {
           this.level=0;
       }
 
-      console.log("lvl:", level);
+      //console.log("lvl:", level);
       //this.shipsArr=this.gameLevels[level].map(a => {return {...a}})
       this.level++;
       //if (this.level===this.gameLevels.length) this.level=0
