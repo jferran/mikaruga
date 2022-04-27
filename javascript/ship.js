@@ -7,7 +7,10 @@ class Ship {
         this.h=40;
 
         this.img = new Image();
-        this.img.src = "./images/nave.svg"
+        if(color==="white"){
+            this.img.src="/images/Space-Fighter-2.svg"
+        }else {this.img.src= "/images/Space-Fighter.svg"}
+         
         this.speed=1;
         this.life=1;
 
