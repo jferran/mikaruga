@@ -1,11 +1,8 @@
 //console.log("desde el js Game");
-let secondsPassed;
-let oldTimeStamp = +new Date() - 60 * 5;
-let fps;
-let frame;
+
 let posX = 0,
   posY = 0;
-let timePassed = 0;
+
 // https://spicyyoghurt.com/tutorials/html5-javascript-game-development/create-a-proper-game-loop-with-requestanimationframe
 // https://javascript.tutorialink.com/adding-a-number-to-number-results-in-nan-in-my-program-why/
 
@@ -145,6 +142,7 @@ class Game {
 
       //this.shipsArr=structuredClone(this.gameLevels[level]);
       //this.shipsArr=deepCopy(this.gameLevels[level])
+      console.log("secondsPassed"+secondsPassed, "timePassed",timePassed)
       if(level===1){
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
@@ -189,13 +187,18 @@ class Game {
     
   };
 
+  
+
   gameLoop = (timeStamp) => {
     //console.log(timeStamp)
 
     // Calculate the number of seconds passed since the last frame
-    //secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-    //oldTimeStamp = timeStamp;
-
+    secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+    oldTimeStamp = timeStamp;
+    console.log("oldt", oldTimeStamp)
+    secondsPassed = Math.min(secondsPassed, 0.2);
+    //timePassed += secondsPassed
+    if(isNaN(secondsPassed))secondsPassed=0.5
     // Calculate fps
     fps = Math.round(1 / secondsPassed);
 
@@ -217,7 +220,7 @@ class Game {
       //if ((timeStamp * 10 + index) % 2 === 0) {
         ship.shoot();
       }
-      ship.move();
+      ship.move(secondsPassed);
       ship.moveBullets();
     });
 
@@ -250,6 +253,12 @@ class Game {
       ship.drawBullets();
     });
 
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, 200, 100);
+    ctx.font = '25px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText("FPS: " + fps, 10, 30);
+    //console.log("secondsP", secondsPassed)
     // 4. control y recursion
     if (this.isGameOn) requestAnimationFrame(this.gameLoop);
   };

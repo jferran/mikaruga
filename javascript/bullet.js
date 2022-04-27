@@ -15,7 +15,7 @@ class Bullet {
       }
     }
 
-    this.speed = 2;
+    this.speed = 200;
     this.direction = direction;
     this.color = ship.color;
     this.visible = true;
@@ -43,16 +43,18 @@ class Bullet {
     }
   }
 
-  move() {
+  move(secondsPassed) {
+    timePassed += secondsPassed
     if (this.direction === "up") {
-      this.y = this.y - this.speed;
+        console.log("secPB", secondsPassed)
+      this.y = this.y - this.speed*secondsPassed;
     } else if (this.direction === "down"){
-      this.y = this.y + this.speed;
+      this.y = this.y + this.speed*secondsPassed;
     } else if(this.direction === "right"){
-        this.x = this.x+this.speed
+        this.x = this.x+this.speed*secondsPassed
     }
     else{
-        this.x=this.x-this.speed
+        this.x=this.x-this.speed*secondsPassed
 
     }
 

@@ -12,6 +12,14 @@ const scoreDOM=document.querySelector("#score")
 let mySound;
 let myMusic;
 
+var secondsPassed=0;
+var oldTimeStamp=0 //= +new Date() - 60 * 5;
+var timePassed = 0;
+let fps;
+let frame;
+//let timeStamp=Math.floor(Date.now() / 1000)
+
+
 function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
@@ -34,6 +42,7 @@ function sound(src) {
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
     //console.log("iniciando juego")
+    //console.log(timeStamp)
     startScreen.style.display="none"
     canvas.style.display="block"
     gameOverScreen.style.display="none"
@@ -53,9 +62,9 @@ const startGame = () => {
     //console.log(game)
 
     window.addEventListener("keydown", keyPress)
-
-
-
+/*
+    console.log(secondsPassed)
+    secondsPassed=timeStamp*/
     game.gameLoop();
 }
 
