@@ -1,5 +1,8 @@
 # mikaruga
-
+Arrow keys for movement
+Space bar key for shooting
+Control Key for changing ship color
+Shift key for shooting ultra beam
 
 images: <br/>
 https://freesvg.org/cartoon-spaceship <br/>
