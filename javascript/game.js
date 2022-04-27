@@ -196,7 +196,7 @@ class Game {
     secondsPassed = (timeStamp - oldTimeStamp) / 1000;
     oldTimeStamp = timeStamp;
     console.log("oldt", oldTimeStamp)
-    secondsPassed = Math.min(secondsPassed, 0.2);
+    secondsPassed = Math.min(secondsPassed, 0.9);
     //timePassed += secondsPassed
     if(isNaN(secondsPassed))secondsPassed=0.5
     // Calculate fps
