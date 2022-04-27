@@ -29,7 +29,7 @@ class Game {
 
     this.level = 1;
     this.gameLevels = [];
-
+/*
     this.gameLevels = [
       [
         new Ship(40, 40, "black", "LeftRightLoop", true),
@@ -47,7 +47,7 @@ class Game {
         new Ship(40, 40, "black", "UpDown", true),
         new Ship(40, -60, "black", "UpDown", true),
       ],
-    ];
+    ];*/
     /*    
         levels.forEach((level, index) => {
             level.forEach(spaceShip =>{
