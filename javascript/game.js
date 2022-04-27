@@ -149,16 +149,16 @@ class Game {
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
             new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
-            new Ship(160, 40, "black", "LeftRightLoop", false, "down"),
-            new Ship(220, 40, "white", "LeftRightLoop", false, "down"),
+            new Ship(160, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
           ]
       }
       else if (level===2){
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
             new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
-            new Ship(160, 40, "black", "LeftRightLoop", false, "down"),
-            new Ship(220, 40, "white", "LeftRightLoop", false, "down"),
+            new Ship(160, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
           ]
       }
       else if (level===3){
