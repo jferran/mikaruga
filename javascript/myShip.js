@@ -7,7 +7,7 @@ class MyShip {
         
 
         this.img = new Image();
-        this.img.src = "./images/nave.svg"
+        this.img.src = "/images/Space-Fighter.svg"
         this.speed=20;
         this.life=20
         this.superBeamWhite=0
@@ -75,12 +75,12 @@ class MyShip {
     switchColor = () => {
         if(this.color==="black"){
             this.color="white"
-            this.img.src="./images/naveWhite.svg"
+            this.img.src="/images/Space-Fighter-2.svg"
             
         }
         else{
             this.color="black"
-            this.img.src = "./images/nave.svg"
+            this.img.src = "/images/Space-Fighter.svg"
         }
     }
 

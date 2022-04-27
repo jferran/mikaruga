@@ -37,8 +37,14 @@ class Bullet {
   move() {
     if (this.direction === "up") {
       this.y = this.y - this.speed;
-    } else {
+    } else if (this.direction === "down"){
       this.y = this.y + this.speed;
+    } else if(this.direction === "right"){
+        this.x = this.x+this.speed
+    }
+    else{
+        this.x=this.x-this.speed
+
     }
 
     if (

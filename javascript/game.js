@@ -147,24 +147,24 @@ class Game {
       //this.shipsArr=deepCopy(this.gameLevels[level])
       if(level===1){
           this.shipsArr=[
-            new Ship(40, 40, "black", "LeftRightLoop", true),
-            new Ship(100, 40, "white", "LeftRightLoop", true),
-            new Ship(160, 40, "black", "LeftRightLoop", false),
-            new Ship(220, 40, "white", "LeftRightLoop", false),
+            new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(160, 40, "black", "LeftRightLoop", false, "down"),
+            new Ship(220, 40, "white", "LeftRightLoop", false, "down"),
           ]
       }
       else if (level===2){
           this.shipsArr=[
-            new Ship(40, 40, "black", "LeftRightLoop", true),
-            new Ship(100, 40, "white", "LeftRightLoop", true),
-            new Ship(160, 40, "black", "LeftRightLoop", false),
-            new Ship(220, 40, "white", "LeftRightLoop", false),
+            new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(160, 40, "black", "LeftRightLoop", false, "down"),
+            new Ship(220, 40, "white", "LeftRightLoop", false, "down"),
           ]
       }
       else if (level===3){
           this.shipsArr=[
-            new Ship(40, 40, "black", "UpDown", true),
-            new Ship(40, -60, "black", "UpDown", true),
+            new Ship(40, 40, "black", "UpDown", true, "right"),
+            new Ship(40, -60, "black", "UpDown", true, "right"),
             //this.level===1
           ]
           this.level=0;

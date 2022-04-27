@@ -1,5 +1,5 @@
 class Ship {
-    constructor(x, y, color, movePattern, loop) {
+    constructor(x, y, color, movePattern, loop, shootDirection) {
 
         this.x=x;
         this.y=y;
@@ -29,7 +29,7 @@ class Ship {
         }
 
         this.loop=loop
-
+        this.shootDirection=shootDirection
         this.visible = true
         this.bullets = []
     }
@@ -57,7 +57,7 @@ class Ship {
         //this.drawBullets()
     }
     shoot = () => {
-        if(this.life>0 && this.visible)this.bullets.push(new Bullet(this, "down"))
+        if(this.life>0 && this.visible)this.bullets.push(new Bullet(this, this.shootDirection))
         //console.log("enemy bullet 0 x:",this.bullets[0].x)
     }
     deleteBullets = () => {
