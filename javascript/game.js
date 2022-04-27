@@ -63,6 +63,7 @@ class Game {
   */
     this.shipsArr = [];
     //this.killedShipsArr = []
+    //this.collidedBullets = []
 
     this.isGameOn = true;
     this.score = 0;
@@ -84,7 +85,7 @@ class Game {
   collisionControl = (spaceShip, bulletsArr) => {
     //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
-    bulletsArr.forEach((bullet) => {
+    bulletsArr.forEach((bullet, index) => {
       if (
         bullet.visible &&
         spaceShip.visible &&
@@ -94,7 +95,11 @@ class Game {
         spaceShip.h + spaceShip.y > bullet.y - bullet.radius
       ) {
         // collision detected!
-        if (bullet.superBeam === false) bullet.visible = false;
+        if (bullet.superBeam === false) {
+            bullet.visible = false;
+            //this.collidedBullets.push(bullet)
+            bulletsArr.splice(index, 1)
+        }
         //console.log("Collision");
 
         if (bullet.color !== spaceShip.color) {
@@ -125,6 +130,7 @@ class Game {
         // collision detected!
         this.myShip.life--;
         ship.visible = false;
+        //this.killedShipsArr.push(ship)
         //console.log("myship collided");
       }
     });
@@ -196,7 +202,7 @@ class Game {
     secondsPassed = (timeStamp - oldTimeStamp) / 1000;
     oldTimeStamp = timeStamp;
     console.log("oldt", oldTimeStamp)
-    secondsPassed = Math.min(secondsPassed, 0.9);
+    secondsPassed = Math.min(secondsPassed, 0.01);
     //timePassed += secondsPassed
     if(isNaN(secondsPassed))secondsPassed=0.5
     // Calculate fps
