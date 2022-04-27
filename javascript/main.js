@@ -27,7 +27,7 @@ function sound(src) {
     }
   }
   let shotSound = new Audio()
-  shotSound.src = "/music/laser-gun-19sf.mp3"
+  shotSound.src = "./music/laser-gun-19sf.mp3"
   shotSound.load()
   //https://stackoverflow.com/questions/20935031/game-development-restart-the-soundaudio-element-before-it-ended-playing
 
@@ -41,8 +41,8 @@ const startGame = () => {
 
     //myGamePiece = new component(30, 30, "red", 10, 120);
     //mySound = new sound("bounce.mp3");
-    myMusic = new sound("/music/01 - Cirrus (Prologue).mp3");
-    mySound = new sound("/music/laser-gun-19sf.mp3")
+    myMusic = new sound("./music/01 - Cirrus (Prologue).mp3");
+    mySound = new sound("./music/laser-gun-19sf.mp3")
     myMusic.play();
     //myGameArea.start();
 
