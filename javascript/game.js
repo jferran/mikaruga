@@ -27,7 +27,7 @@ class Game {
 
     this.myShip = new MyShip();
 
-    this.level = 0;
+    this.level = 1;
     this.gameLevels = [];
 
     this.gameLevels = [
@@ -167,20 +167,17 @@ class Game {
             new Ship(40, -60, "black", "UpDown", true),
             //this.level===1
           ]
+          this.level=0;
       }
 
       console.log("lvl:", level);
-      console.log("naves nivel ", level, this.shipsArr);
-
       //this.shipsArr=this.gameLevels[level].map(a => {return {...a}})
-
       this.level++;
       //if (this.level===this.gameLevels.length) this.level=0
-    } else if (level >4) {
-      this.level = 0;
+    } 
       //this.shipsArr=this.gameLevels[level].slice()
       //console.log(this.gameLevels)
-    }
+    
   };
 
   gameLoop = (timeStamp) => {
