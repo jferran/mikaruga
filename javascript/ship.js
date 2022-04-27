@@ -11,7 +11,7 @@ class Ship {
             this.img.src="./images/Space-Fighter-2.svg"
         }else {this.img.src= "./images/Space-Fighter-2-black.svg"}
          
-        this.speed=200;
+        this.speed=2;
         this.life=1;
 
         this.color=color
@@ -51,7 +51,7 @@ class Ship {
     }
     moveBullets = () => {
         this.bullets.forEach(bullet => {
-            bullet.move(secondsPassed)
+            bullet.move()
         })
     }
     draw = () => {
@@ -78,14 +78,12 @@ class Ship {
     }
 
     move = (secondsPassed) => {
-        timePassed += secondsPassed
         //console.log("pollito bajando");
         // x0=0, x1=-1
-        console.log("eeee", secondsPassed)
         if(this.movePattern==="LeftRightLoop"){
             if(this.direction==="right"){
-                if((this.x+this.w+ (this.speed*secondsPassed))<canvas.width) {
-                    this.x=this.x+ (this.speed*secondsPassed)
+                if((this.x+ this.speed)<canvas.width-this.w) {
+                    this.x=this.x+ this.speed
                 }
                 else if (this.loop){
                     this.x=canvas.width-this.w
@@ -94,8 +92,8 @@ class Ship {
                 else this.visible=false
             }
             else if (this.direction==="left"){
-                if((this.x- this.speed*secondsPassed)>0) {
-                    this.x=this.x- this.speed*secondsPassed
+                if((this.x- this.speed)>0) {
+                    this.x=this.x- this.speed
                 }
                 //loop, change direction
                 else if (this.loop){
@@ -106,8 +104,8 @@ class Ship {
             }
         }
         else if (this.movePattern==="UpDown"){
-            if((this.y - this.h + this.speed*secondsPassed)<canvas.height){
-                this.y+= (this.speed/4)*secondsPassed
+            if((this.y - this.h + this.speed)<canvas.height){
+                this.y+= this.speed/4
             }
             else this.visible=false;
         }

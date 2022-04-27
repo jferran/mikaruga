@@ -64,7 +64,7 @@ class MyShip {
     }
     moveBullets = () => {
         this.bullets.forEach(bullet => {
-            bullet.move(secondsPassed)
+            bullet.move()
         })
     }
 /*

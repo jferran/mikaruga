@@ -1,8 +1,11 @@
 //console.log("desde el js Game");
-
+let secondsPassed;
+let oldTimeStamp = +new Date() - 60 * 5;
+let fps;
+let frame;
 let posX = 0,
   posY = 0;
-
+let timePassed = 0;
 // https://spicyyoghurt.com/tutorials/html5-javascript-game-development/create-a-proper-game-loop-with-requestanimationframe
 // https://javascript.tutorialink.com/adding-a-number-to-number-results-in-nan-in-my-program-why/
 
@@ -63,7 +66,6 @@ class Game {
   */
     this.shipsArr = [];
     //this.killedShipsArr = []
-    //this.collidedBullets = []
 
     this.isGameOn = true;
     this.score = 0;
@@ -85,7 +87,7 @@ class Game {
   collisionControl = (spaceShip, bulletsArr) => {
     //console.log("spaceship", spaceShip.x, spaceShip.y, spaceShip.w, spaceShip.h)
 
-    bulletsArr.forEach((bullet, index) => {
+    bulletsArr.forEach((bullet) => {
       if (
         bullet.visible &&
         spaceShip.visible &&
@@ -95,11 +97,7 @@ class Game {
         spaceShip.h + spaceShip.y > bullet.y - bullet.radius
       ) {
         // collision detected!
-        if (bullet.superBeam === false) {
-            bullet.visible = false;
-            //this.collidedBullets.push(bullet)
-            bulletsArr.splice(index, 1)
-        }
+        if (bullet.superBeam === false) bullet.visible = false;
         //console.log("Collision");
 
         if (bullet.color !== spaceShip.color) {
@@ -130,7 +128,6 @@ class Game {
         // collision detected!
         this.myShip.life--;
         ship.visible = false;
-        //this.killedShipsArr.push(ship)
         //console.log("myship collided");
       }
     });
@@ -148,7 +145,6 @@ class Game {
 
       //this.shipsArr=structuredClone(this.gameLevels[level]);
       //this.shipsArr=deepCopy(this.gameLevels[level])
-      console.log("secondsPassed"+secondsPassed, "timePassed",timePassed)
       if(level===1){
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
@@ -193,29 +189,15 @@ class Game {
     
   };
 
-  
-
   gameLoop = (timeStamp) => {
     //console.log(timeStamp)
 
     // Calculate the number of seconds passed since the last frame
-    secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-    oldTimeStamp = timeStamp;
-    console.log("oldt", oldTimeStamp)
-    fps = Math.round(1 / secondsPassed);
-    //secondsPassed = Math.min(secondsPassed, 0.05);
-    
-    console.log("timestamp: ", timeStamp, "type: ", typeof timeStamp)
-    //timePassed += secondsPassed
-    if(isNaN(secondsPassed))secondsPassed=0.5
+    //secondsPassed = (timeStamp - oldTimeStamp) / 1000;
+    //oldTimeStamp = timeStamp;
+
     // Calculate fps
-    let notYet=true
-    while(notYet){
-        secondsPassed += (timeStamp) / 1000;
-        if (secondsPassed>20000) notYet=false;
-        console.log("secondsPassed in gameLoop: ", secondsPassed+ "typeof: ", typeof secondsPassed)
-    }
-    oldTimeStamp = timeStamp;
+    fps = Math.round(1 / secondsPassed);
 
     // 1. borrar el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -235,7 +217,7 @@ class Game {
       //if ((timeStamp * 10 + index) % 2 === 0) {
         ship.shoot();
       }
-      ship.move(secondsPassed);
+      ship.move();
       ship.moveBullets();
     });
 
@@ -268,12 +250,6 @@ class Game {
       ship.drawBullets();
     });
 
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, 200, 100);
-    ctx.font = '25px Arial';
-    ctx.fillStyle = 'black';
-    ctx.fillText("FPS: " + fps, 10, 30);
-    //console.log("secondsP", secondsPassed)
     // 4. control y recursion
     if (this.isGameOn) requestAnimationFrame(this.gameLoop);
   };
