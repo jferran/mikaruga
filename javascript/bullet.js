@@ -26,11 +26,20 @@ class Bullet {
   draw() {
     if (this.visible) {
       ctx.beginPath();
-      if (this.color === "white") ctx.fillStyle = "#FFF";
-      else ctx.fillStyle = "#000000";
+      if (this.color === "white") {
+          ctx.fillStyle = "#FFF";
+          ctx.strokeStyle = "black";  
+        }
+      else {
+          ctx.fillStyle = "#000000";
+          ctx.strokeStyle = "white";
+        }
       ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
       ctx.fill();
+      ctx.lineWidth = 1;
+      
       ctx.stroke();
+
     }
   }
 

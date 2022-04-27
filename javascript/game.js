@@ -23,7 +23,7 @@ class Game {
     //1. el fondo
 
     this.bg = new Image();
-    this.bg.src = "./images/bg.png"; //quizas lo modifiquemos luego
+    this.bg.src = "/images/galaxyVectorCrop.svg"; //quizas lo modifiquemos luego
 
     this.myShip = new MyShip();
 

@@ -36,12 +36,18 @@ class MyShip {
     }
 
     drawBeamsCharge = () => {
-        ctx.fillStyle = "black";
+        
         for (let i=0, offset=10; i<this.superBeamBlack; i++, offset+=20){
+            ctx.fillStyle = "white"
+            ctx.fillRect(i+9+offset, 34, 13, 22);
+            ctx.fillStyle = "black";
             ctx.fillRect(i+10+offset, 35, 11, 20);
         }
         ctx.fillStyle = "white";
         for (let i=0, offset=10; i<this.superBeamWhite; i++, offset+=20){
+            ctx.fillStyle = "black"
+            ctx.fillRect(i+9+offset, 59, 13, 22);
+            ctx.fillStyle = "white";
             ctx.fillRect(i+10+offset, 60, 11, 20);
         }
     }
