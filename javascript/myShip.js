@@ -7,7 +7,7 @@ class MyShip {
         
 
         this.img = new Image();
-        this.img.src = "/images/Space-Fighter.svg"
+        this.img.src = "./images/Space-Fighter.svg"
         this.speed=20;
         this.life=20
         this.superBeamWhite=0
@@ -23,7 +23,7 @@ class MyShip {
 
     drawLife = () => {
         this.heart = new Image();
-        this.heart.src = "/images/1646656079PixelArt-Heart-1.svg"
+        this.heart.src = "./images/1646656079PixelArt-Heart-1.svg"
 
         //ctx.fillStyle = "blue";
         //ctx.drawImage(this.heart, 10, 10, 20, 20)
@@ -81,12 +81,12 @@ class MyShip {
     switchColor = () => {
         if(this.color==="black"){
             this.color="white"
-            this.img.src="/images/Space-Fighter-2.svg"
+            this.img.src="./images/Space-Fighter-2.svg"
             
         }
         else{
             this.color="black"
-            this.img.src = "/images/Space-Fighter.svg"
+            this.img.src = "./images/Space-Fighter.svg"
         }
     }
 
