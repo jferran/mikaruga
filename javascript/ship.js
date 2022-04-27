@@ -11,7 +11,7 @@ class Ship {
             this.img.src="./images/Space-Fighter-2.svg"
         }else {this.img.src= "./images/Space-Fighter.svg"}
          
-        this.speed=1;
+        this.speed=2;
         this.life=1;
 
         this.color=color
