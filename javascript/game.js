@@ -69,6 +69,8 @@ class Game {
 
     this.isGameOn = true;
     this.score = 0;
+    this.killedShips = 0
+    this.collectedEnergy = 0;
   }
   //todos los metodos que regulan nuestro juego, loop, colisiones, etc
 
@@ -103,7 +105,10 @@ class Game {
         if (bullet.color !== spaceShip.color) {
           spaceShip.life -= 1;
           //if enemy hitted
-          if(spaceShip.superbeamWhite === undefined) this.score++
+          if(spaceShip.superbeamWhite === undefined) {
+            this.score++
+            this.killedShips++
+          }
 
           //spaceShip.visible=false;
           if (spaceShip.life < 1) spaceShip.visible = false;
@@ -114,6 +119,7 @@ class Game {
            spaceShip.superBeamBlack !== undefined
         ) {
           this.score++;//absorbing balls
+          this.collectedEnergy++;
           if (bullet.color === "white") spaceShip.superBeamWhite++;
           else spaceShip.superBeamBlack++;
         }
@@ -177,8 +183,8 @@ class Game {
             new Ship(40, 80, "black", "UpDown", true, "right"),
             new Ship(40, 130, "white", "UpDown", true, "right"),
 
-            new Ship(canvas.width-40, 80, "black", "UpDown", true, "left"),
-            new Ship(canvas.width-40, 130, "white", "UpDown", true, "left")
+            new Ship(canvas.width-80, 80, "black", "UpDown", true, "left"),
+            new Ship(canvas.width-80, 130, "white", "UpDown", true, "left")
             //this.level===1
           ]
           this.level=0;
@@ -212,7 +218,9 @@ class Game {
     this.loadLevel(this.level);
 
     //this.score = this.score + 1 / 60;
-    scoreDOM.innerText = Math.floor(this.score);
+    scoreDOM.innerText = this.score;
+    killedShipsDOM.innerText = this.killedShips;
+    collectedEnergyDOM.innerText=this.collectedEnergy;
 
     this.shipsArr.forEach((ship, index) => {
       //this.bulletsEnemyArr.push(new Bullet(ship.x+ship.w/2, ship.y, "down", ship.color))

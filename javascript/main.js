@@ -7,6 +7,8 @@ const ctx = canvas.getContext("2d")
 const gameOverScreen=document.querySelector("#gameover-screen")
 const restartBtn=document.querySelector("#restart-btn")
 let game;
+const killedShipsDOM=document.querySelector("#killed-ships")
+const collectedEnergyDOM=document.querySelector("#collected-energy")
 const scoreDOM=document.querySelector("#score")
 
 let mySound;
