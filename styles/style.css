@@ -73,6 +73,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 50px;
+    color:white
   }
   
   #my-canvas, #gameover-screen{

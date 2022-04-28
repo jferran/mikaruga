@@ -102,6 +102,9 @@ class Game {
 
         if (bullet.color !== spaceShip.color) {
           spaceShip.life -= 1;
+          //if enemy hitted
+          if(spaceShip.superbeamWhite === undefined) this.score++
+
           //spaceShip.visible=false;
           if (spaceShip.life < 1) spaceShip.visible = false;
         }
@@ -110,9 +113,11 @@ class Game {
            spaceShip.superBeamWhite !== undefined ||
            spaceShip.superBeamBlack !== undefined
         ) {
+          this.score++;//absorbing balls
           if (bullet.color === "white") spaceShip.superBeamWhite++;
           else spaceShip.superBeamBlack++;
         }
+
       }
     });
   };
@@ -206,7 +211,7 @@ class Game {
     this.gameOver();
     this.loadLevel(this.level);
 
-    this.score = this.score + 1 / 60;
+    //this.score = this.score + 1 / 60;
     scoreDOM.innerText = Math.floor(this.score);
 
     this.shipsArr.forEach((ship, index) => {
