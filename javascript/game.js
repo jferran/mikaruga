@@ -29,41 +29,7 @@ class Game {
 
     this.level = 1;
     this.gameLevels = [];
-/*
-    this.gameLevels = [
-      [
-        new Ship(40, 40, "black", "LeftRightLoop", true),
-        new Ship(100, 40, "white", "LeftRightLoop", true),
-        new Ship(160, 40, "black", "LeftRightLoop", true),
-        new Ship(220, 40, "white", "LeftRightLoop", true),
-      ],
-      [
-        new Ship(40, 40, "black", "LeftRightLoop", true),
-        new Ship(100, 40, "white", "LeftRightLoop", true),
-        new Ship(160, 40, "black", "LeftRightLoop", true),
-        new Ship(220, 40, "white", "LeftRightLoop", true),
-      ],
-      [
-        new Ship(40, 40, "black", "UpDown", true),
-        new Ship(40, -60, "black", "UpDown", true),
-      ],
-    ];*/
-    /*    
-        levels.forEach((level, index) => {
-            level.forEach(spaceShip =>{
-                console.log("Load lvl:", level)
-                let newShip=new Ship(spaceShip[0], spaceShip[1],spaceShip[2],spaceShip[3],spaceShip[4])
-                console.log(newShip)
-                //console.log(newShip)
-                this.gameLevels[index].push(newShip)
-            })
-        })*/
-    /*
-        this.verticalLevelTest = [
-            [new Ship(40, -60, "black", "UpDown", true), new Ship(40, 100, "black", "UpDown", true)]
-        ]
-        this.gameLevels=this.verticalLevelTest
-  */
+
     this.shipsArr = [];
     //this.killedShipsArr = []
 
@@ -201,15 +167,6 @@ class Game {
   };
 
   gameLoop = (timeStamp) => {
-    //console.log(timeStamp)
-
-    // Calculate the number of seconds passed since the last frame
-    //secondsPassed = (timeStamp - oldTimeStamp) / 1000;
-    //oldTimeStamp = timeStamp;
-
-    // Calculate fps
-    fps = Math.round(1 / secondsPassed);
-
     // 1. borrar el canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 

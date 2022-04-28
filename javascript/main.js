@@ -28,9 +28,6 @@ function sound(src) {
       this.sound.pause();
     }
   }
-  let shotSound = new Audio()
-  shotSound.src = "./music/laser-gun-19sf.mp3"
-  shotSound.load()
   //https://stackoverflow.com/questions/20935031/game-development-restart-the-soundaudio-element-before-it-ended-playing
 
 // * STATE MANAGEMENT FUNCTIONS
@@ -40,11 +37,10 @@ const startGame = () => {
     canvas.style.display="block"
     gameOverScreen.style.display="none"
 
-
-    //myGamePiece = new component(30, 30, "red", 10, 120);
-    //mySound = new sound("bounce.mp3");
     myMusic = new sound("./music/01 - Cirrus (Prologue).mp3");
-    mySound = new sound("./music/laser-gun-19sf.mp3")
+    //mySound = new sound("./music/laser-gun-19sf.mp3")
+    //myMusic.volume=0.5
+    //mySound.volume=0.2
     myMusic.play();
     //myGameArea.start();
 
@@ -65,18 +61,13 @@ const startGame = () => {
 
 const keyPress = (event) =>{
     if (event.code==="Space"){
-        //console.log("apretando barra espacio")
-        //game.myShipShoot();
         game.myShip.shoot();
     }
     else if (event.shiftKey){
-        //console.log("apretando shift")
-        //game.myShipShoot();
         game.myShip.shootSuperBeam();
     }
     else if(event.ctrlKey){
         game.myShip.switchColor();
-        //console.log("switch")
     }
     else if(event.code==="ArrowLeft"){
         game.myShip.moveLeft();
@@ -96,5 +87,3 @@ const keyPress = (event) =>{
 
 startBtn.addEventListener("click", startGame)
 restartBtn.addEventListener("click", startGame)
-
-
