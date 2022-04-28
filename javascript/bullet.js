@@ -1,3 +1,5 @@
+var audioShot=new Audio("../music/laser-gun-19sf.mp3")
+audioShot.volume=0.3
 class Bullet {
   constructor(ship, direction, superBeam) {
     this.x = ship.x + ship.w / 2;
@@ -20,7 +22,8 @@ class Bullet {
     this.color = ship.color;
     this.visible = true;
     //mySound.play()
-    new Audio("../music/laser-gun-19sf.mp3").play();
+    
+    audioShot.play();
   }
 
   draw() {
