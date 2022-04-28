@@ -27,28 +27,37 @@ class MyShip {
 
         //ctx.fillStyle = "blue";
         //ctx.drawImage(this.heart, 10, 10, 20, 20)
+        ctx.font = '18px serif';
+        ctx.strokeStyle = "white"
+        ctx.strokeText('Life:', 10, 25);
+
         let offset=10
         for (let i=0; i<this.life; i++){
             //ctx.fillRect(i+10, 10, 11, 20);
-            ctx.drawImage(this.heart, i+10+offset, 10, 20, 20)
+            ctx.drawImage(this.heart, i+50+offset, 10, 20, 20)
             offset+=20
         }
     }
 
     drawBeamsCharge = () => {
-        
+        ctx.font = '18px serif';
+        ctx.strokeStyle = "white"
+        ctx.strokeText('Black', 10, 50);
         for (let i=0, offset=10; i<this.superBeamBlack; i++, offset+=20){
             ctx.fillStyle = "white"
-            ctx.fillRect(i+9+offset, 34, 13, 22);
+            ctx.fillRect(i+40+9+offset, 34, 13, 22);
             ctx.fillStyle = "black";
-            ctx.fillRect(i+10+offset, 35, 11, 20);
+            ctx.fillRect(i+40+10+offset, 35, 11, 20);
         }
-        ctx.fillStyle = "white";
+        ctx.font = '18px serif';
+        ctx.strokeStyle = "white"
+        ctx.strokeText('White', 10, 75);
+        //ctx.fillStyle = "White Energy:";
         for (let i=0, offset=10; i<this.superBeamWhite; i++, offset+=20){
             ctx.fillStyle = "black"
-            ctx.fillRect(i+9+offset, 59, 13, 22);
+            ctx.fillRect(i+40+9+offset, 59, 13, 22);
             ctx.fillStyle = "white";
-            ctx.fillRect(i+10+offset, 60, 11, 20);
+            ctx.fillRect(i+40+10+offset, 60, 11, 20);
         }
     }
 
