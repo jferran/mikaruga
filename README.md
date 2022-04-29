@@ -89,4 +89,4 @@ In case of collision with same color bullets, we collect the energy for a super 
 # Extra Links
 
 ### Slides
-[Link Slides.com](https://docs.google.com/presentation/d/138o01hAz-0gXepN78RsDgse12HiiuN7Fz_N_hJnI9_g/edit?usp=sharing)
+[Link Slides.com](https://docs.google.com/presentation/d/1mvK1vtwlZC2SW7258xLtM9Nrcj_8L2v4jeXGGWs0ppI/edit?usp=sharing)
