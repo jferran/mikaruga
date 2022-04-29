@@ -43,6 +43,7 @@ class Game {
   gameOver = () => {
     if (this.myShip.life < 1) {
       this.isGameOn = false;
+      myMusic.pause();
       canvas.style.display = "none";
       gameOverScreen.style.display = "flex";
     }
@@ -143,8 +144,8 @@ class Game {
             new Ship(40, 40, "black", "UpDown", true, "right"),
             new Ship(40, -60, "white", "UpDown", true, "right"),
 
-            new Ship(canvas.width-40, 40, "black", "UpDown", true, "left"),
-            new Ship(canvas.width-40, -60, "white", "UpDown", true, "left"),
+            new Ship(canvas.width-80, 40, "black", "UpDown", true, "left"),
+            new Ship(canvas.width-80, -60, "white", "UpDown", true, "left"),
 
             new Ship(40, 80, "black", "UpDown", true, "right"),
             new Ship(40, 130, "white", "UpDown", true, "right"),

@@ -1,5 +1,5 @@
 var audioShot=new Audio("../music/laser-gun-19sf.mp3")
-audioShot.volume=0.3
+audioShot.volume=0.003
 class Bullet {
   constructor(ship, direction, superBeam) {
     this.x = ship.x + ship.w / 2;

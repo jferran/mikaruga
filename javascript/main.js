@@ -14,20 +14,7 @@ const scoreDOM=document.querySelector("#score")
 let mySound;
 let myMusic;
 
-function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
-    }
-    this.stop = function(){
-      this.sound.pause();
-    }
-  }
+
   //https://stackoverflow.com/questions/20935031/game-development-restart-the-soundaudio-element-before-it-ended-playing
 
 // * STATE MANAGEMENT FUNCTIONS
@@ -37,11 +24,12 @@ const startGame = () => {
     canvas.style.display="block"
     gameOverScreen.style.display="none"
 
-    myMusic = new sound("./music/01 - Cirrus (Prologue).mp3");
-    //mySound = new sound("./music/laser-gun-19sf.mp3")
-    //myMusic.volume=0.5
-    //mySound.volume=0.2
+    myMusic = new Audio("./music/01 - Cirrus (Prologue).mp3");
+    
+    myMusic.volume=0.01
     myMusic.play();
+    
+    
     //myGameArea.start();
 
     //empezar nuestra logica de juego
