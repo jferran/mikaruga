@@ -150,6 +150,22 @@ body {
     font-size: 22px;
     line-height: 40px;
   }
-  p{
-  display: block;}
-  #controls{display:inline-block}
+  #controls{
+    display:block;
+    align-items: center;
+  }
+  .instruction{
+    height: 40px;
+  }
+  p#shift{
+    line-height: 40px;
+  }
+  p#arrows{
+    line-height: 20px;
+  }
+  p#ctrl{
+    line-height: 40px;
+  }
+  div#spacebar {
+    height: 18px;
+}
