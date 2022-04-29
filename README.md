@@ -32,15 +32,12 @@ In case of collision with same color bullets, we collect the energy for a super 
 
 # Backlog Functionalities
 
-- List here the cool (but not essential) functionalities your game could have
+- Complex move pattern
+- Life collection
+- Shields
+- Switch off music/sounds
 
 # Proyect Structure
-
-- List here the JS files you think you might need. 
-- One main.js to manage DOM elements, one for Game class and one for each other class.
-- Recommended: Inside each file you can list the functions, clases, properties and methods you will need.
-
-Example:
 
 ## main.js
 
@@ -49,35 +46,61 @@ Example:
 ## game.js
 
 - Game () {
-    this.player;
+    this.myShip;
+    this.level;
+    this.gameLevels;
+    this.shipsArr;
+    this.score;
 }
 - gameLoop () {}
-- checkCollisions () {}
+- collisionControl () {}
+- colisionSpaceShipsControl () {}
+- gameOver () {}
 
-## player.js 
+## myShip.js 
 
-- Player () {
+- MyShip () {
     this.x;
     this.y;
     this.w;
     this.h;
 }
-- drawPlayer () {}
-- movePlayer () {}
+- draw () {}
+- move () {}
+- shoot () {}
+- shootSuperBeam () {}
+- switchColor () {}
+
+## ship.js
+- Ship() {
+    this.x;
+    this.y;
+    this.w;
+    this.h;
+    this.speed;
+    this.movePattern;
+}
+- draw () {}
+- move () {}
+- shoot () {}
+
+## bullet.js
+- Bullet() {
+    -this.x;
+    -this.y;
+    -this.radius;
+    -this.speed;
+} 
+- draw () {}
+- move () {}
 
 # States and Transitions
 
-- List here the different pages your game will have. For example: Start Screen, Game Screen, Win Screen, etc.
+- Start Screen
+- Game Screen
+- Win Screen
 
-# Tasks (Optional)
-
-- List of individual Tasks you will need to finish the game from zero to an amazing game!
-- Note: If using Trello or github proyect to keep track of tasks, then you can remove this section.
-
-# Extra Links (The links can be added later when available)
-
-### Trello
-[Link url](https://trello.com/b/CWviY2zv/kraken-brigade-project)
+# Extra Links
 
 ### Slides
 [Link Slides.com](https://docs.google.com/presentation/d/138o01hAz-0gXepN78RsDgse12HiiuN7Fz_N_hJnI9_g/edit?usp=sharing)
