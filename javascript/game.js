@@ -125,6 +125,7 @@ class Game {
 
       //this.shipsArr=structuredClone(this.gameLevels[level]);
       //this.shipsArr=deepCopy(this.gameLevels[level])
+
       if(level===1){
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
@@ -133,37 +134,91 @@ class Game {
             new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
           ]
       }
-      else if (level===2){
+      if(level===2){
+        this.shipsArr=[
+          new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
+          new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
+          new Ship(160, 40, "black", "LeftRightLoop", true, "down"),
+          new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
+
+          new Ship(40, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(100, 100, "white", "LeftRightLoop", true, "down"),
+            new Ship(160, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(220, 100, "white", "LeftRightLoop", true, "down"),
+        ]
+    }
+      else if (level===3){
+        this.shipsArr=[
+          new Ship(40, 40, "black", "UpDown", true, "right"),
+          new Ship(40, -60, "white", "UpDown", true, "right"),
+
+          new Ship(canvas.width-80, 40, "black", "UpDown", true, "left"),
+          new Ship(canvas.width-80, -60, "white", "UpDown", true, "left"),
+
+          new Ship(40, 80, "black", "UpDown", true, "right"),
+          new Ship(40, 130, "white", "UpDown", true, "right"),
+
+          new Ship(canvas.width-80, 80, "black", "UpDown", true, "left"),
+          new Ship(canvas.width-80, 130, "white", "UpDown", true, "left")
+          //this.level===1
+        ]
+    }
+      else if (level===4){
           this.shipsArr=[
             new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
-            new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
-            new Ship(160, 40, "black", "LeftRightLoop", true, "down"),
-            new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(80, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(120, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(160, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(200, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(240, 40, "white", "LeftRightLoop", true, "down"),
+            new Ship(280, 40, "black", "LeftRightLoop", true, "down"),
+            new Ship(320, 40, "white", "LeftRightLoop", true, "down"),
+
+            new Ship(40, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(80, 100, "white", "LeftRightLoop", true, "down"),
+            new Ship(120, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(160, 100, "white", "LeftRightLoop", true, "down"),
+            new Ship(200, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(240, 100, "white", "LeftRightLoop", true, "down"),
+            new Ship(280, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(320, 100, "white", "LeftRightLoop", true, "down"),
+
           ]
       }
-      else if (level===3){
-          this.shipsArr=[
-            new Ship(40, 40, "black", "UpDown", true, "right"),
-            new Ship(40, -60, "white", "UpDown", true, "right"),
+      else if (level===5){
+        this.shipsArr=[
+          new Ship(40, 40, "black", "UpDown", true, "right"),
+          new Ship(40, -60, "black", "UpDown", true, "right"),
 
-            new Ship(canvas.width-80, 40, "black", "UpDown", true, "left"),
-            new Ship(canvas.width-80, -60, "white", "UpDown", true, "left"),
+          new Ship(canvas.width-80, 40, "white", "UpDown", true, "left"),
+          new Ship(canvas.width-80, -60, "white", "UpDown", true, "left"),
 
-            new Ship(40, 80, "black", "UpDown", true, "right"),
-            new Ship(40, 130, "white", "UpDown", true, "right"),
+          new Ship(40, 80, "black", "UpDown", true, "right"),
+          new Ship(40, 130, "black", "UpDown", true, "right"),
 
-            new Ship(canvas.width-80, 80, "black", "UpDown", true, "left"),
-            new Ship(canvas.width-80, 130, "white", "UpDown", true, "left")
-            //this.level===1
-          ]
-          this.level=0;
-          levelSpeed*=1.1;
+          new Ship(canvas.width-80, 80, "black", "UpDown", true, "left"),
+          new Ship(canvas.width-80, 130, "white", "UpDown", true, "left"),
           
-      }
+          new Ship(40, 40, "black", "LeftRightLoop", true, "down"),
+          new Ship(100, 40, "white", "LeftRightLoop", true, "down"),
+          new Ship(160, 40, "black", "LeftRightLoop", true, "down"),
+          new Ship(220, 40, "white", "LeftRightLoop", true, "down"),
+
+          new Ship(40, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(100, 100, "white", "LeftRightLoop", true, "down"),
+            new Ship(160, 100, "black", "LeftRightLoop", true, "down"),
+            new Ship(220, 100, "white", "LeftRightLoop", true, "down"),
+        ]
+    }
+
       
       //console.log("lvl:", level);
       //this.shipsArr=this.gameLevels[level].map(a => {return {...a}})
       this.level++;
+      if (this.level>5){
+        this.level=1;
+        levelSpeed*=1.1;
+      }
       //if (this.level===this.gameLevels.length) this.level=0
     } 
       //this.shipsArr=this.gameLevels[level].slice()
