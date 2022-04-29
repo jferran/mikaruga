@@ -26,7 +26,7 @@ const startGame = () => {
 
     myMusic = new Audio("./music/01 - Cirrus (Prologue).mp3");
     
-    myMusic.volume=0.30
+    myMusic.volume=0.20
     myMusic.play();
     
     
