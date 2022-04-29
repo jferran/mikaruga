@@ -21,7 +21,7 @@ class Bullet {
     this.visible = true;
     //mySound.play()
     const audioShot=new Audio("../music/laser-gun-19sf.mp3")
-    audioShot.volume=0.01    
+    audioShot.volume=0.15    
     audioShot.play();
   }
 
