@@ -6,6 +6,7 @@ let frame;
 let posX = 0,
   posY = 0;
 let timePassed = 0;
+let levelSpeed;
 // https://spicyyoghurt.com/tutorials/html5-javascript-game-development/create-a-proper-game-loop-with-requestanimationframe
 // https://javascript.tutorialink.com/adding-a-number-to-number-results-in-nan-in-my-program-why/
 
@@ -37,6 +38,7 @@ class Game {
     this.score = 0;
     this.killedShips = 0
     this.collectedEnergy = 0;
+    levelSpeed=1;
   }
   //todos los metodos que regulan nuestro juego, loop, colisiones, etc
 
@@ -155,8 +157,10 @@ class Game {
             //this.level===1
           ]
           this.level=0;
+          levelSpeed*=1.1;
+          
       }
-
+      
       //console.log("lvl:", level);
       //this.shipsArr=this.gameLevels[level].map(a => {return {...a}})
       this.level++;

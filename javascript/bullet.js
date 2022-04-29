@@ -48,15 +48,14 @@ class Bullet {
 
   move() {
     if (this.direction === "up") {
-      this.y = this.y - this.speed;
+      this.y = this.y - this.speed*levelSpeed;
     } else if (this.direction === "down"){
-      this.y = this.y + this.speed;
+      this.y = this.y + this.speed*levelSpeed;
     } else if(this.direction === "right"){
-        this.x = this.x+this.speed
+        this.x = this.x+this.speed*levelSpeed
     }
     else{
-        this.x=this.x-this.speed
-
+        this.x=this.x-this.speed*levelSpeed
     }
 
     if (

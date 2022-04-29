@@ -82,18 +82,18 @@ class Ship {
         // x0=0, x1=-1
         if(this.movePattern==="LeftRightLoop"){
             if(this.direction==="right"){
-                if((this.x+ this.speed)<canvas.width-this.w) {
-                    this.x=this.x+ this.speed
+                if((this.x+ this.speed*levelSpeed)<canvas.width-this.w) {
+                    this.x=this.x+ this.speed*levelSpeed
                 }
                 else if (this.loop){
-                    this.x=canvas.width-this.w
+                    this.x=canvas.width-this.w*levelSpeed
                     this.direction="left"
                 }
                 else this.visible=false
             }
             else if (this.direction==="left"){
-                if((this.x- this.speed)>0) {
-                    this.x=this.x- this.speed
+                if((this.x- this.speed*levelSpeed)>0) {
+                    this.x=this.x- this.speed*levelSpeed
                 }
                 //loop, change direction
                 else if (this.loop){
@@ -104,8 +104,8 @@ class Ship {
             }
         }
         else if (this.movePattern==="UpDown"){
-            if((this.y - this.h + this.speed)<canvas.height){
-                this.y+= this.speed/4
+            if((this.y - this.h + this.speed*levelSpeed)<canvas.height){
+                this.y+= this.speed*levelSpeed/4
             }
             else this.visible=false;
         }
